@@ -13,9 +13,16 @@ public class MainCharMove : MonoBehaviour {
 	public Rigidbody2D mainCharRigidbody;
 	public bool jump = false;
 
-	//Variáveis que determinam os limites de movimentação do MainChar
+	// Variáveis que determinam os limites de movimentação do MainChar
 	public bool allowMovRight = true;
 	public bool allowMovLeft = true;
+
+	// Variáveis usadas na criação do tiro do MainChar
+	public float shotingRate = 0.1f; // Tempo entre um tiro e outro
+	public float shotCoolDown = 0f;
+	public Transform barrel; // GameObject Empty que cria a bala
+	public GameObject shot; // GameObject da bala 
+
 
 
 	void Start () {
@@ -51,6 +58,16 @@ public class MainCharMove : MonoBehaviour {
 		}
 		if((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && jump == true){
 			mainCharRigidbody.AddForce(new Vector2 (0, force), ForceMode2D.Impulse);
+		}
+
+		// Controle do tempo entre um tiro e outro
+		if(shotCoolDown > 0){
+			shotCoolDown -= Time.deltaTime;
+		}
+		// Libera um tiro (GameObject Shot) quando o usuário clica nas teclas M ou J
+		if(Input.GetKey(KeyCode.M) || Input.GetKey(KeyCode.J)){
+			Fire ();
+			shotCoolDown = shotingRate;
 		}
 	}
 
@@ -97,4 +114,13 @@ public class MainCharMove : MonoBehaviour {
 		}
 	}
 
+	// Método de criação do GameObject Shot
+	void Fire(){
+		if(shotCoolDown <= 0f){
+			if(shot != null){ //Verifica se o GameObject shot foi criado
+				var cloneShot = Instantiate(shot, barrel.position, Quaternion.identity) as GameObject;
+				cloneShot.transform.localScale = this.transform.localScale;
+			}
+		}
+	}
 }

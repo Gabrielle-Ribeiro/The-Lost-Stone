@@ -51,9 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Code\Background scroll\Rock world\GroundScroll.cs" />
-     <Compile Include="Assets\Code\Background scroll\Rock world\SkyScroll.cs" />
      <Compile Include="Assets\Code\Main char\MainCharMove.cs" />
+     <Compile Include="Assets\Code\Main char\ShotMov.cs" />
+     <Compile Include="Assets\Code\RockWorld\Background scroll\GroundScroll.cs" />
+     <Compile Include="Assets\Code\RockWorld\Background scroll\SkyScroll.cs" />
+     <Compile Include="Assets\Code\RockWorld\Boss\BossMov.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -8,6 +8,8 @@ TagManager:
   - MainChar
   - LimitRight
   - LimitLeft
+  - Boss
+  - Shot
   layers:
   - Default
   - TransparentFX
