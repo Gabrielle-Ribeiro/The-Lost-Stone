@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F2107F1D-BF1A-4CA2-5267-258FB5F20E70}</ProjectGuid>
+    <ProjectGuid>{9253F52F-5902-7E51-FCC1-E02B37349263}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -53,9 +53,17 @@
   <ItemGroup>
      <Compile Include="Assets\Code\Main char\MainCharMove.cs" />
      <Compile Include="Assets\Code\Main char\ShotMov.cs" />
+     <Compile Include="Assets\Code\RockWorld\Ancient Tree\TreeIA.cs" />
+     <Compile Include="Assets\Code\RockWorld\Ancient Tree\TreeRadar.cs" />
      <Compile Include="Assets\Code\RockWorld\Background scroll\GroundScroll.cs" />
      <Compile Include="Assets\Code\RockWorld\Background scroll\SkyScroll.cs" />
      <Compile Include="Assets\Code\RockWorld\Boss\BossMov.cs" />
+     <Compile Include="Assets\Code\RockWorld\Sand Monster\BulletMove.cs" />
+     <Compile Include="Assets\Code\RockWorld\Sand Monster\Enemy_1.cs" />
+     <Compile Include="Assets\Code\RockWorld\Sand Monster\Enemy_s.cs" />
+     <Compile Include="Assets\Code\RockWorld\Sand Monster\EnemyScript.cs" />
+     <Compile Include="Assets\Code\RockWorld\Sand Monster\MoveScript.cs" />
+     <Compile Include="Assets\Code\RockWorld\Sand Monster\WeaponScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
