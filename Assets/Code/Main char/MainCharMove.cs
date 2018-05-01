@@ -85,7 +85,7 @@ public class MainCharMove : MonoBehaviour {
         {
             mainCharRigidbody.AddForce(new Vector2(0, force), ForceMode2D.Impulse);
             AnimController.SetBool("isJumping", true);
-            AnimController.SetBool("isGround", false);
+            AnimController.SetBool("inGround", false);
         }
 
         // Controle do tempo entre um tiro e outro

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114957933085740144}
   m_Layer: 0
   m_Name: MainChar
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   shotCoolDown: 0
   barrel: {fileID: 4776632818449348}
   shot: {fileID: 1333899163680606, guid: 2cf80f4487eb8414aba494b18fe29bc5, type: 2}
+  AnimController: {fileID: 0}
 --- !u!212 &212226644305297360
 SpriteRenderer:
   m_ObjectHideFlags: 1
