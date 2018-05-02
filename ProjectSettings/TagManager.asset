@@ -10,6 +10,12 @@ TagManager:
   - LimitLeft
   - Boss
   - Shot
+  - Tree
+  - TreeRadar
+  - EnemyBullet
+  - Enemy_1
+  - AncientTree
+  - HomeTree
   layers:
   - Default
   - TransparentFX

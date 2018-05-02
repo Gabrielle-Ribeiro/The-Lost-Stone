@@ -219,6 +219,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Code\CameraBehavior.cs" />
     <Compile Include="Assets\Code\Main char\MainCharMove.cs" />
     <Compile Include="Assets\Code\Main char\ShotMov.cs" />
     <Compile Include="Assets\Code\RockWorld\Ancient Tree\TreeIA.cs" />

@@ -149,7 +149,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4511729558626974, guid: 9889cd81935067e4089235fa65202049, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1565878300637154, guid: 9889cd81935067e4089235fa65202049, type: 2}
       propertyPath: m_Name
@@ -293,7 +293,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4231098179165574, guid: a95cde1090f641748808d274ca18c203, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1943028406827936, guid: a95cde1090f641748808d274ca18c203, type: 2}
       propertyPath: m_Name
@@ -339,8 +339,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4612870169942194, guid: 9668f8066cc537142bdec9d81015cb19, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 95814139026882248, guid: 9668f8066cc537142bdec9d81015cb19,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3f5bd6c833fe58e479d247c485f1f223, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9668f8066cc537142bdec9d81015cb19, type: 2}
   m_IsPrefabParent: 0
@@ -678,7 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a752f906a24b7a41895f3cb36632367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.25
+  speed: 0.1
   background: {fileID: 1312400741}
 --- !u!23 &1312400741
 MeshRenderer:
@@ -837,7 +842,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4231098179165574, guid: a95cde1090f641748808d274ca18c203, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a95cde1090f641748808d274ca18c203, type: 2}
@@ -879,7 +884,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4511729558626974, guid: 9889cd81935067e4089235fa65202049, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9889cd81935067e4089235fa65202049, type: 2}

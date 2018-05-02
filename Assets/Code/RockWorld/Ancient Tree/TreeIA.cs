@@ -85,7 +85,7 @@ public class TreeIA : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col)
     {
         //Se a bala acertar nosso inimigo
-        if (col.gameObject.name == "ShotMainChar(Clone)")
+        if (col.gameObject.tag == "Shot")
         {
             if (life == 1)
             {
@@ -101,17 +101,13 @@ public class TreeIA : MonoBehaviour {
             //TODO: uma vez dentro da animaçao TakingDamage, ele não volta
             else if (life > 1)
                 AnimController.SetBool("isTakingDamage", true);
-
-            DestroyObject(col.gameObject, 0);
+            
             life--;
         }
 
         //Se nosso inimigo acertar o personagem
-        if (col.gameObject.name == "MainChar")
-        {
+        if (col.gameObject.tag == "Player")
             AnimController.SetBool("isAttacking", true);
-            //Personagem principal toma dano
-        }
 
         else
             AnimController.SetBool("isAttacking", false);

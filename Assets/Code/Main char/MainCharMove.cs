@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainCharMove : MonoBehaviour {
-
+ 
 	// Variáveis usadas na alteração da direção que o MainChar está olhando
 	public bool direction = true;
 	public Transform mainCharTransform;
@@ -25,6 +25,12 @@ public class MainCharMove : MonoBehaviour {
 
     //Variável que determina o estado do MainChar
     public Animator AnimController;
+
+    //Variável para vida do personagem
+    //1 halfLife -> meio coração
+    //Golpes pesados -> 1 coraçao de dano 
+    //Golpes leves -> meio coraçao de dano
+    public int halfLife = 6;
 
     void Start () {
 		/* Indica que com a variável mainCharTransform será possível manipular os valores das 
@@ -113,14 +119,36 @@ public class MainCharMove : MonoBehaviour {
 		mainCharTransform.localScale = scale;
 	}
 
-	// Método que faz com que o MainChar possa pular caso esteja em contado com o chão
-	void OnCollisionEnter2D(Collision2D ground){
-		if(ground.gameObject.CompareTag("Ground")){
+	// Método que faz alguma ação ao colidir com algo
+	void OnCollisionEnter2D(Collision2D col){
+
+        // Método que faz com que o MainChar possa pular caso esteja em contado com o chão
+        if (col.gameObject.CompareTag("Ground")){
             AnimController.SetBool("inGround", true);
             AnimController.SetBool("isJumping", false);
 			jump = true;
 		}
-	}
+
+        // Recebe dano caso colida com algum inimigo
+        if (col.gameObject.CompareTag("Tree"))
+            TakenDamage(2);
+
+        if (col.gameObject.CompareTag("Enemy_1"))
+            TakenDamage(1);
+
+        if (col.gameObject.CompareTag("EnemyBullet"))
+            TakenDamage(1);
+
+        // if (halfLife > 0)
+        //AnimController.SetBool("isTakingDamage", true);
+
+        //else
+        //AnimController.SetBool("isTakingDamage", true);
+
+        //if (halfLife < 1)
+            //GameOver
+        
+    }
 
 	// Método que impede o MainChar de pular caso não esteja em contado com o chão
 	void OnCollisionExit2D(Collision2D ground){
@@ -151,6 +179,25 @@ public class MainCharMove : MonoBehaviour {
 			allowMovLeft = true;
 		}
 	}
+
+
+    //Função que retira vida do personagem conforme o dano aplicado
+    void TakenDamage(int damage)
+    {
+        halfLife -= damage;
+
+        if (halfLife > 0) ;
+            //AnimController.SetBool("isTakingDamage", true);
+
+        else
+        {
+            //AnimController.SetBool("isDying", true);
+            //GameOver
+            DestroyObject(gameObject, 0);
+        }
+
+        
+    }
 
 	// Método de criação do GameObject Shot
 	void Fire(){

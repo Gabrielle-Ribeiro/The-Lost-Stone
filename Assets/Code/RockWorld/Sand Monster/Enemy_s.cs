@@ -32,7 +32,7 @@ public class Enemy_s : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col)
     {
         //Se a bala acertar nosso inimigo
-        if (col.gameObject.name == "ShotMainChar(Clone)")
+        if (col.gameObject.tag == "Shot")
         {
             if (life == 1)
             {
@@ -47,7 +47,7 @@ public class Enemy_s : MonoBehaviour {
         }
 
         //Se nosso inimigo acertar o personagem
-        if (col.gameObject.name == "MainChar")
+        if (col.gameObject.tag == "Player")
         {
             //Causar Dano no Personagem Principal
         }

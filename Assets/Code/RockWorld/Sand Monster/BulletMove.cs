@@ -19,21 +19,17 @@ public class BulletMove : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col)
     {
         //Se acertar uma bala no personagem principal
-        if (col.gameObject.name == "ShotMainChar(Clone)")
+        if (col.gameObject.tag == "Shot")
         {
             DestroyObject(gameObject, 0);
-            DestroyObject(col.gameObject, 0);
         }
 
         //Se acertar o personagem principal
-        else if (col.gameObject.name == "MainChar")
-        {
+        else if (col.gameObject.tag == "Player")
             DestroyObject(gameObject, 0);
-            //MainChar toma dano
-        }
 
         //Se acertar o chão, cria o monstro menor
-        else if (col.gameObject.name == "Background_3")
+        else if (col.gameObject.tag == "Ground")
         {
             DestroyObject(gameObject, 0);
 

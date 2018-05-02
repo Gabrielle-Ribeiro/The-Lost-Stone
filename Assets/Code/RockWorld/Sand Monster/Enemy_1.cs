@@ -32,20 +32,16 @@ public class Enemy_1 : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         //Se acertar uma bala no personagem principal
-        if (col.gameObject.name == "ShotMainChar(Clone)")
+        if (col.gameObject.tag == "Shot")
         {
             GetComponent<Collider2D>().enabled = false;
 
             DestroyObject(gameObject, 3);
-            DestroyObject(col.gameObject, 0);
         }
 
         //Se nosso inimigo acertar o personagem
-        if (col.gameObject.name == "MainChar")
-        {
+        if (col.gameObject.tag == "Player")
             DestroyObject(gameObject, 0);
-            //Personagem principal toma dano
-        }
 
         if (col.gameObject.tag == "Enemy_1" || col.gameObject.name == "Enemy_2")
         {

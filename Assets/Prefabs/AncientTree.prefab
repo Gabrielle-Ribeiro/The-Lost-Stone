@@ -39,9 +39,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4907930569627484}
+  - component: {fileID: 50969230059115968}
+  - component: {fileID: 68051381873211512}
   m_Layer: 0
   m_Name: AncientTree
-  m_TagString: Untagged
+  m_TagString: HomeTree
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,8 +99,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262180930259580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9970564, y: -0.2526161, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalPosition: {x: -4.428354, y: -1.4058174, z: 0}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_Children:
   - {fileID: 4643727973408152}
   m_Father: {fileID: 0}
@@ -111,6 +113,26 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1223725972154676}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
+--- !u!50 &50969230059115968
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262180930259580}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -164,6 +186,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.597674, y: 2.4048269}
   m_EdgeRadius: 0
+--- !u!68 &68051381873211512
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1262180930259580}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.2749089, y: -1.1746632}
+  - {x: 1.2626086, y: -1.1685133}
 --- !u!95 &95647416860650838
 Animator:
   serializedVersion: 3
@@ -197,6 +236,7 @@ MonoBehaviour:
   lostPlayer: 1
   canWalk: 0
   dead: 0
+  life: 0
   AnimController: {fileID: 95647416860650838}
 --- !u!114 &114718105444377310
 MonoBehaviour:

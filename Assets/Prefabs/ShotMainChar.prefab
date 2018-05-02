@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c499c17700ddac14faa7e8c0dcc0e45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 3, y: 0}
+  speed: {x: 10, y: 0}
   rigidbodyShot: {fileID: 50738178009407344}
 --- !u!212 &212584457311440620
 SpriteRenderer:
