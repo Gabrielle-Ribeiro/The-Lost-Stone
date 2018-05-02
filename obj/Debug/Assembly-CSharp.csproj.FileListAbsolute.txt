@@ -36,3 +36,5 @@ C:\Users\gabri_000\Desktop\The Lost Stone\Temp\bin\Debug\UnityEngine.HoloLens.xm
 C:\Users\gabri_000\Desktop\The Lost Stone\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
 C:\Users\gabri_000\Desktop\The Lost Stone\obj\Debug\Assembly-CSharp.dll
 C:\Users\gabri_000\Desktop\The Lost Stone\obj\Debug\Assembly-CSharp.pdb
+C:\Users\gabri_000\Desktop\Desenvolvimento de software\The-Lost-Stone\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\gabri_000\Desktop\Desenvolvimento de software\The-Lost-Stone\obj\Debug\Assembly-CSharp.dll
