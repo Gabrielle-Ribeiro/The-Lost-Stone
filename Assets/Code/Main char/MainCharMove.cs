@@ -13,10 +13,6 @@ public class MainCharMove : MonoBehaviour {
 	public Rigidbody2D mainCharRigidbody;
 	public bool jump = false;
 
-	// Variáveis que determinam os limites de movimentação do MainChar
-	public bool allowMovRight = true;
-	public bool allowMovLeft = true;
-
 	// Variáveis usadas na criação do tiro do MainChar
 	public float shotingRate = 0.1f; // Tempo entre um tiro e outro
 	public float shotCoolDown = 0f;
@@ -50,6 +46,11 @@ public class MainCharMove : MonoBehaviour {
     }
 
 	void Update () {
+		
+		// Se o valor da variável halfLife chegar a 0 o MainChar morre
+		if(halfLife <= 0){
+			MainCharDead ();
+		}
 
 		// Mudança da direção que o MainChar está olhando
 		if((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && !direction){
@@ -62,33 +63,21 @@ public class MainCharMove : MonoBehaviour {
         /* Movimentação do MainChar para a direita, esquerda e pulo de acordo com a tecla que o
 		 * usuário está apertando. 
 		 */
-        if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)))
-        {
+        if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))){
             AnimController.SetBool("isWalking", true);
-
-            if (allowMovRight == true)
-            {
-                transform.Translate(new Vector2(speed * Time.deltaTime, 0));
-            }
+            transform.Translate(new Vector2(speed * Time.deltaTime, 0));
         }
 
-        else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)))
-        {
+        else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))){
             AnimController.SetBool("isWalking", true);
-
-            if (allowMovLeft == true)
-            {
-                transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
-            }
+            transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
         }
 
-        else
-        {
+        else{
             AnimController.SetBool("isWalking", false);
         }
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && jump == true)
-        {
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && jump == true){
             mainCharRigidbody.AddForce(new Vector2(0, force), ForceMode2D.Impulse);
             AnimController.SetBool("isJumping", true);
             AnimController.SetBool("inGround", false);
@@ -104,11 +93,10 @@ public class MainCharMove : MonoBehaviour {
 			Fire ();
 			shotCoolDown = shotingRate;
 		}
-
-        else
-        {
+        else{
             AnimController.SetBool("isFiring", false);
         }
+			
 	}
 
 	// O método Flip altera a direção que o personagem está olhando
@@ -121,7 +109,6 @@ public class MainCharMove : MonoBehaviour {
 
 	// Método que faz alguma ação ao colidir com algo
 	void OnCollisionEnter2D(Collision2D col){
-
         // Método que faz com que o MainChar possa pular caso esteja em contado com o chão
         if (col.gameObject.CompareTag("Ground")){
             AnimController.SetBool("inGround", true);
@@ -147,7 +134,12 @@ public class MainCharMove : MonoBehaviour {
 
         //if (halfLife < 1)
             //GameOver
-        
+
+
+		// Se o MainChar cair em um "buraco" ele perde todas as suas vidas
+		if(col.gameObject.CompareTag("Hole")){
+			halfLife = 0;
+		}
     }
 
 	// Método que impede o MainChar de pular caso não esteja em contado com o chão
@@ -158,30 +150,8 @@ public class MainCharMove : MonoBehaviour {
 			jump = false;
 		}
 	}
-
-	/* Os próximos dois métodos limitam a movimentação do MainChar numa área pré 
-	 * definida da tela
-	 */
-	void OnTriggerEnter2D(Collider2D limit){
-		if(limit.gameObject.CompareTag("LimitRight")){
-			allowMovRight = false;
-		}
-		else if(limit.gameObject.CompareTag("LimitLeft")){
-			allowMovLeft = false;
-		}
-	}
-
-	void OnTriggerExit2D(Collider2D limit){
-		if(limit.gameObject.CompareTag("LimitRight")){
-			allowMovRight = true;
-		}
-		else if(limit.gameObject.CompareTag("LimitLeft")){
-			allowMovLeft = true;
-		}
-	}
-
-
-    //Função que retira vida do personagem conforme o dano aplicado
+		
+    //Método que retira vida do personagem conforme o dano aplicado
     void TakenDamage(int damage)
     {
         halfLife -= damage;
@@ -207,5 +177,10 @@ public class MainCharMove : MonoBehaviour {
 				cloneShot.transform.localScale = this.transform.localScale;
 			}
 		}
+	}
+
+	// Método que controla a morte do MainChar
+	void MainCharDead(){
+		
 	}
 }

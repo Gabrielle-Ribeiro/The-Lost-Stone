@@ -16,6 +16,7 @@ TagManager:
   - Enemy_1
   - AncientTree
   - HomeTree
+  - Hole
   layers:
   - Default
   - TransparentFX
