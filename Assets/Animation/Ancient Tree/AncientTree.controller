@@ -127,6 +127,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isDying
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isWalking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102523048290480238}
   m_Solo: 0
@@ -256,6 +259,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isTakingDamage
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isWalking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102282546621813382}
   m_Solo: 0
@@ -360,6 +366,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: isAttacking
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102547128436111880}

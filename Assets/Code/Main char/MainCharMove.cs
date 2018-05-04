@@ -26,7 +26,7 @@ public class MainCharMove : MonoBehaviour {
     //1 halfLife -> meio coração
     //Golpes pesados -> 1 coraçao de dano 
     //Golpes leves -> meio coraçao de dano
-    public int halfLife = 6;
+    public int halfLife;
 
     void Start () {
 		/* Indica que com a variável mainCharTransform será possível manipular os valores das 
@@ -117,7 +117,8 @@ public class MainCharMove : MonoBehaviour {
 		}
 
         // Recebe dano caso colida com algum inimigo
-        if (col.gameObject.CompareTag("Tree"))
+        // TODO: ser arremessado ao tomar dano
+        if (col.gameObject.CompareTag("AncientTree"))
             TakenDamage(2);
 
         if (col.gameObject.CompareTag("Enemy_1"))
@@ -130,7 +131,7 @@ public class MainCharMove : MonoBehaviour {
         //AnimController.SetBool("isTakingDamage", true);
 
         //else
-        //AnimController.SetBool("isTakingDamage", true);
+        //AnimController.SetBool("isDying", true);
 
         //if (halfLife < 1)
             //GameOver
@@ -163,10 +164,7 @@ public class MainCharMove : MonoBehaviour {
         {
             //AnimController.SetBool("isDying", true);
             //GameOver
-            DestroyObject(gameObject, 0);
         }
-
-        
     }
 
 	// Método de criação do GameObject Shot
