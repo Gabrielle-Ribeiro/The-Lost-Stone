@@ -223,7 +223,6 @@
     <Compile Include="Assets\Code\Main char\MainCharMove.cs" />
     <Compile Include="Assets\Code\Main char\ShotMov.cs" />
     <Compile Include="Assets\Code\RockWorld\Ancient Tree\AncientTree.cs" />
-    <Compile Include="Assets\Code\RockWorld\Ancient Tree\TreeRadar.cs" />
     <Compile Include="Assets\Code\RockWorld\Background scroll\GroundScroll.cs" />
     <Compile Include="Assets\Code\RockWorld\Background scroll\SkyScroll.cs" />
     <Compile Include="Assets\Code\RockWorld\Boss\BossMov.cs" />

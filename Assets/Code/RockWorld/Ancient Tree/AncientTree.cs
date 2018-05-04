@@ -55,7 +55,7 @@ public class AncientTree : MonoBehaviour {
         if (canWalk)
         {
             //Caso o Jogador esteja no "campo de visão" da arvore, ela o persegue
-            if (!lostPlayer)
+            if (!lostPlayer && !isDead)
             {
                 ancientTree.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                 AnimController.SetBool("isWalking", true);
@@ -80,9 +80,10 @@ public class AncientTree : MonoBehaviour {
         {
             life -= playerDamage;
 
-            //Caso a arvore tome dano
+            //Caso a arvore morra ao receber dano
             if (life < 1)
             {
+                //Congelando o sprite e desabilitando o colisor
                 GetComponent<Collider2D>().enabled = false;
                 rgbd_ancientTree.constraints = RigidbodyConstraints2D.FreezePosition;
 
@@ -92,7 +93,7 @@ public class AncientTree : MonoBehaviour {
                 AnimController.SetBool("isDying", true);
             }
 
-            //Caso a arvore morra ao receber dano
+            //Caso a arvore tome dano
             else if (life > 0)
                 AnimController.SetBool("isTakingDamage", true);
         }

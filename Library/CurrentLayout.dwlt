@@ -40,8 +40,8 @@ MonoBehaviour:
     y: 658
     width: 1192
     height: 329
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 14}
@@ -69,10 +69,10 @@ MonoBehaviour:
     y: 0
     width: 1192
     height: 987
-  m_MinSize: {x: 200, y: 321}
-  m_MaxSize: {x: 4002, y: 8021}
+  m_MinSize: {x: 202, y: 342}
+  m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 2476
+  controlID: 48
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 2382
+  controlID: 70
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,8 +165,8 @@ MonoBehaviour:
     y: 0
     width: 1192
     height: 658
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -215,7 +215,7 @@ MonoBehaviour:
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
-  m_LastLoadedLayoutName: Custom Animation
+  m_LastLoadedLayoutName: 
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -237,10 +237,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 987
-  m_MinSize: {x: 711, y: 492}
+  m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 2475
+  controlID: 145
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -505,19 +505,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs/RockWorld/Enemies
+    - Assets/Code/RockWorld/Ancient Tree
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/RockWorld/Enemies
+  - Assets/Code/RockWorld/Ancient Tree
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\GIT _ REPOsity\The-Lost-Stone
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ea2f0000
-    m_LastClickedID: 12266
-    m_ExpandedIDs: 000000002a2c0000402c00002c2e00004e2e00009a2e0000ce2e0000d02e0000362f0000722f0000be2f0000f62f00001a300000e630000000ca9a3bffffff7f
+    m_SelectedIDs: 0a2b0000
+    m_LastClickedID: 11018
+    m_ExpandedIDs: 00000000402700005a2700006e290000ea2900007c2a0000b22a0000b42a00001e2b00005c2b0000ba2b0000fa2b0000282c0000542f000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -545,7 +545,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002a2c0000302c00002c2e00004e2e0000ce2e0000362f0000722f0000be2f0000f62f00001a300000e630000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000402700005a2700006e290000ea2900007c2a0000b22a0000b42a00001e2b00005c2b0000ba2b0000fa2b0000282c0000542f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -632,9 +632,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.0360785, y: 0.72936094, z: 1.1145602}
+    m_Target: {x: 2.1005044, y: 1.3863102, z: 1.0704894}
     speed: 2
-    m_Value: {x: 5.0360785, y: 0.72936094, z: 1.1145602}
+    m_Value: {x: 2.1005044, y: 1.3863102, z: 1.0704894}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -661,9 +661,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 10.501014
+    m_Target: 14.905806
     speed: 2
-    m_Value: 10.501014
+    m_Value: 14.905806
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -703,23 +703,23 @@ MonoBehaviour:
     height: 384
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a8b3feff
-    m_LastClickedID: -85080
-    m_ExpandedIDs: a8b3feff0ecefeff10cefeff0055ffff0e83ffff24faffff00000000
+    m_SelectedIDs: 9c060000
+    m_LastClickedID: 0
+    m_ExpandedIDs: a6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: AncientTree (2)
+      m_OriginalName: AncientTree (2)
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -22480
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 4
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 12}
     m_SearchString: 
