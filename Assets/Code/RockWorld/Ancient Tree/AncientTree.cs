@@ -5,7 +5,7 @@ using UnityEngine;
 public class AncientTree : MonoBehaviour {
 
     /*Ancient Tree:
-     *  -Permanece imóvel até o jogador collidir com ela;
+     *  -Permanece imóvel até o jogador acorda-lo (atirar ou colidir);
      *  -Persegue o jogador até ele sair de perto;
      *  
      *  TODO:
@@ -19,26 +19,30 @@ public class AncientTree : MonoBehaviour {
     public bool canWalk;
     public bool isDead;
     public bool isWaiting;
-    public bool LookingRight;
+    public bool onGround;
 
-    public int life;
-    public int playerDamage;
+    public int life;                // Vida do personagem
+    public int playerDamage;        // Dano que o jogador causa a este npc
 
     Animator AnimController;
 
-    Transform player;
     Transform ancientTree;
+    Transform player;               // Armazena o local do jogador
 
-    Rigidbody2D rgbd_ancientTree;
+    Rigidbody2D rgbd_ancientTree;   // Permite freezar a posição do npc ao morrer
 
 	void Start () {
         AnimController = GetComponent<Animator>();
         ancientTree = GetComponent<Transform>();
         rgbd_ancientTree = GetComponent<Rigidbody2D>();
 
+        // Definindo a posição inicial como origem
         home = transform.position.x;
+
+        // Definindo o jogador
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
+        // Definindo animação Standing
         AnimController.SetBool("isWalking", false);
         AnimController.SetBool("isAttacking", false);
         AnimController.SetBool("isTakingDamage", false);
@@ -48,21 +52,22 @@ public class AncientTree : MonoBehaviour {
         lostPlayer = true;
         canWalk = false;
         isDead = false;
-        LookingRight = false;
+        onGround = false;
     }
 	
 	void Update () {
         if (canWalk)
         {
-            //Caso o Jogador esteja no "campo de visão" da arvore, ela o persegue
+            // Caso o jogador esteja no "campo de visão" do npc, ele o persegue
             if (!lostPlayer && !isDead)
             {
                 ancientTree.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                 AnimController.SetBool("isWalking", true);
             }
 
-            //else if (lostPLayer)
-            //Voltar a origem
+            // TODO:
+            // else if (lostPLayer && !isDead)
+            // Voltar a origem
 
             else
                 AnimController.SetBool("isWalking", false);
@@ -71,38 +76,50 @@ public class AncientTree : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //Acorda a arvore caso ela esteja dormindo
+        // Acorda o npc caso ele esteja dormindo
         if (isWaiting)
             isWaiting = false;
 
-        //Se a bala acertar nosso inimigo
+        // Se a bala acertar o npc
         if (collision.gameObject.tag == "Shot")
         {
             life -= playerDamage;
 
-            //Caso a arvore morra ao receber dano
+            // Caso o npc morra ao receber dano
             if (life < 1)
             {
-                //Congelando o sprite e desabilitando o colisor
+                // TODO: apenas executar o bloco abaixo caso onGround == true;
+                // Congela o sprite e desabilita o colisor
                 GetComponent<Collider2D>().enabled = false;
                 rgbd_ancientTree.constraints = RigidbodyConstraints2D.FreezePosition;
 
                 isDead = true;
+
+                // Correção bug: Arvore Fantasma
                 canWalk = false;
                 
                 AnimController.SetBool("isDying", true);
             }
 
-            //Caso a arvore tome dano
+            // Caso o npc receba dano mas continue vivo
             else if (life > 0)
                 AnimController.SetBool("isTakingDamage", true);
         }
 
-        //Se o jogador colidir com a arvore
+        // Se o jogador colidir com o npc
         if (collision.gameObject.CompareTag("Player"))
         {
             canWalk = true;
             AnimController.SetBool("isAttacking", true);
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        // Verifica se o npc está no chão
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            onGround = true;
         }
     }
 
@@ -111,6 +128,11 @@ public class AncientTree : MonoBehaviour {
         if (collision.gameObject.CompareTag("Player"))
         {
             AnimController.SetBool("isAttacking", false);
+        }
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            onGround = false;
         }
     }
 

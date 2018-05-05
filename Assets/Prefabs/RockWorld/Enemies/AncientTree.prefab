@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 212419559699076056}
   - component: {fileID: 95647628274893300}
   - component: {fileID: 61374461679834864}
-  - component: {fileID: 58219862484765394}
+  - component: {fileID: 61912952815137766}
   m_Layer: 0
   m_Name: AncientTree
   m_TagString: AncientTree
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173181876415286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.16, y: -1.75, z: 0}
+  m_LocalPosition: {x: -1.08, y: -0.79, z: 0}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -65,21 +65,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58219862484765394
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1173181876415286}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 4.5
 --- !u!61 &61374461679834864
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -104,6 +89,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 2.56, y: 2.4113264}
+  m_EdgeRadius: 0
+--- !u!61 &61912952815137766
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1173181876415286}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.042579174, y: 0.24483395}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
+    newSize: {x: 2.56, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 7.158617, y: 3.0496678}
   m_EdgeRadius: 0
 --- !u!95 &95647628274893300
 Animator:
@@ -139,7 +149,7 @@ MonoBehaviour:
   canWalk: 0
   isDead: 0
   isWaiting: 0
-  LookingRight: 0
+  onGround: 0
   life: 0
   playerDamage: 0
 --- !u!212 &212419559699076056
