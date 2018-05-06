@@ -143,8 +143,20 @@ public class MainCharMove : MonoBehaviour {
 		}
     }
 
-	// Método que impede o MainChar de pular caso não esteja em contado com o chão
-	void OnCollisionExit2D(Collision2D ground){
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        // HOTFIX: Pular ao passar por baixo de uma plataforma
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            jump = true;
+
+            AnimController.SetBool("isJumping", false);
+            AnimController.SetBool("inGround", true);
+        }
+    }
+
+    // Método que impede o MainChar de pular caso não esteja em contado com o chão
+    void OnCollisionExit2D(Collision2D ground){
 		if(ground.gameObject.CompareTag("Ground")){
             AnimController.SetBool("inGround", false);
             AnimController.SetBool("isJumping", true);
