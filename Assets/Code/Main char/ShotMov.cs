@@ -13,7 +13,7 @@ public class ShotMov : MonoBehaviour {
 		/* Indica que com a variável rigidbodyShot será possível manipular os valores das 
 		 * propriedades do componente Rigidbody 2D do objeto MainChar
 		 */
-		rigidbodyShot = GetComponent<Rigidbody2D> ();
+		rigidbodyShot = GetComponent<Rigidbody2D>();
 
 		// Movimentação do GameObject Shot
 		rigidbodyShot.velocity = speed * this.transform.localScale.x;
@@ -28,7 +28,7 @@ public class ShotMov : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject, 0);
     }

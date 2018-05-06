@@ -22,11 +22,11 @@ GameObject:
   - component: {fileID: 212786007115280202}
   - component: {fileID: 50630987594879500}
   - component: {fileID: 61404364203519328}
-  - component: {fileID: 114636866812792666}
   - component: {fileID: 95941475771590944}
-  m_Layer: 9
+  - component: {fileID: 114537577844511230}
+  m_Layer: 0
   m_Name: SandMonter_Minor
-  m_TagString: Enemy_1
+  m_TagString: SandMonsterMinor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1810300202272358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5170693, y: -2.6918526, z: 0}
+  m_LocalPosition: {x: 8.692839, y: -0.017611424, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,7 +58,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -106,7 +106,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114636866812792666
+--- !u!114 &114537577844511230
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -114,10 +114,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1810300202272358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d761845c5e8199248b8e1f492b8b7e80, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f6b21201f0c69a4e8b846c37de11864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 3.5
 --- !u!212 &212786007115280202
 SpriteRenderer:
   m_ObjectHideFlags: 1

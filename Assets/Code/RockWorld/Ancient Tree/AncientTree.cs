@@ -27,20 +27,20 @@ public class AncientTree : MonoBehaviour {
     Animator AnimController;
 
     Transform ancientTree;
-    Transform player;               // Armazena o local do jogador
+    Transform target;               // Armazena o local do alvo (Jogador)
 
     Rigidbody2D rgbd_ancientTree;   // Permite freezar a posição do npc ao morrer
 
 	void Start () {
-        AnimController = GetComponent<Animator>();
         ancientTree = GetComponent<Transform>();
+        AnimController = GetComponent<Animator>();
         rgbd_ancientTree = GetComponent<Rigidbody2D>();
 
         // Definindo a posição inicial como origem
         home = transform.position.x;
 
-        // Definindo o jogador
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        // Definindo o alvo
+        target = GameObject.FindGameObjectWithTag("Player").transform;
 
         // Definindo animação Standing
         AnimController.SetBool("isWalking", false);
@@ -61,7 +61,7 @@ public class AncientTree : MonoBehaviour {
             // Caso o jogador esteja no "campo de visão" do npc, ele o persegue
             if (!lostPlayer && !isDead)
             {
-                ancientTree.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                ancientTree.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
                 AnimController.SetBool("isWalking", true);
             }
 

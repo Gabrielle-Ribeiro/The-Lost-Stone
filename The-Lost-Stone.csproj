@@ -226,12 +226,9 @@
     <Compile Include="Assets\Code\RockWorld\Background scroll\GroundScroll.cs" />
     <Compile Include="Assets\Code\RockWorld\Background scroll\SkyScroll.cs" />
     <Compile Include="Assets\Code\RockWorld\Boss\BossMov.cs" />
-    <Compile Include="Assets\Code\RockWorld\Sand Monster\BulletMove.cs" />
-    <Compile Include="Assets\Code\RockWorld\Sand Monster\Enemy_1.cs" />
-    <Compile Include="Assets\Code\RockWorld\Sand Monster\Enemy_s.cs" />
-    <Compile Include="Assets\Code\RockWorld\Sand Monster\EnemyScript.cs" />
-    <Compile Include="Assets\Code\RockWorld\Sand Monster\MoveScript.cs" />
-    <Compile Include="Assets\Code\RockWorld\Sand Monster\WeaponScript.cs" />
+    <Compile Include="Assets\Code\RockWorld\Sand Monster\MinorIA.cs" />
+    <Compile Include="Assets\Code\RockWorld\Sand Monster\SandMonsterIA.cs" />
+    <Compile Include="Assets\Code\RockWorld\Sand Monster\ThrownIA.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

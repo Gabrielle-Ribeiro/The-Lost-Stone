@@ -10,13 +10,11 @@ TagManager:
   - LimitLeft
   - Boss
   - Shot
-  - Tree
-  - TreeRadar
-  - EnemyBullet
-  - Enemy_1
   - AncientTree
-  - HomeTree
   - Hole
+  - SandMonster
+  - SandMonsterMinor
+  - SandMonsterThrown
   layers:
   - Default
   - TransparentFX

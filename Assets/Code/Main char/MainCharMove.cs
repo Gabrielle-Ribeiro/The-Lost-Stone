@@ -121,10 +121,10 @@ public class MainCharMove : MonoBehaviour {
         if (col.gameObject.CompareTag("AncientTree"))
             TakenDamage(2);
 
-        if (col.gameObject.CompareTag("Enemy_1"))
+        else if (col.gameObject.CompareTag("Enemy_1"))
             TakenDamage(1);
 
-        if (col.gameObject.CompareTag("EnemyBullet"))
+        else if (col.gameObject.CompareTag("EnemyBullet"))
             TakenDamage(1);
 
         // if (halfLife > 0)
