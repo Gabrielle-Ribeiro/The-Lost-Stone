@@ -16,15 +16,12 @@ public class SandMonsterIA : MonoBehaviour {
 
     Animator AnimController;
 
-    public Transform sandMonsterThrown;    // prefab do Attack
-
-    Transform sandMonster;
-    Transform target;               // Armazena o local do alvo (Jogador)
+    public Transform sandMonsterThrown; // prefab do Attack (Thrown)
+    public Transform sandMonsterMinor;  // Prefab do SandMonsterMinor
 
     Rigidbody2D rgbd_sandMonster;
     
 	void Start () {
-        sandMonster = GetComponent<Transform>();
         AnimController = GetComponent<Animator>();
         rgbd_sandMonster = GetComponent<Rigidbody2D>();
         
@@ -32,14 +29,13 @@ public class SandMonsterIA : MonoBehaviour {
         AttackCooldownDefault = AttackCooldown;
 
         // Reduz o tempo restante, o npc começa pronto para atacar, afinal, ele ainda nem atacou
-        AttackCooldown = 0.5f;
-
-        // Define o alvo
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        AttackCooldown = 1f;
         
         lostPlayer = true;
         isDead = false;
         isWaiting = true;
+
+        AnimController.SetBool("isWaiting", true);
     }
 	
 	void Update () {
@@ -50,21 +46,32 @@ public class SandMonsterIA : MonoBehaviour {
             AttackRanged();
 	}
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Shot"))
+        {
+            life -= playerDamage;
+
+            if (life == 1)
+                TransformIntoMinor();
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             lostPlayer = false;
             isWaiting = false;
+
+            AnimController.SetBool("isWaiting", false);
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
             lostPlayer = true;
-        }
     }
 
 
@@ -80,5 +87,13 @@ public class SandMonsterIA : MonoBehaviour {
             var shotTransform = Instantiate(sandMonsterThrown) as Transform;
             shotTransform.position = transform.position;
         }
+    }
+
+    void TransformIntoMinor()
+    {
+        DestroyObject(gameObject, 0);
+
+        var BulletTransform = Instantiate(sandMonsterMinor) as Transform;
+        BulletTransform.position = transform.position;
     }
 }

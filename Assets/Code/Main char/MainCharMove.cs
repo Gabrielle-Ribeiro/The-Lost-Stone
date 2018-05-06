@@ -119,13 +119,13 @@ public class MainCharMove : MonoBehaviour {
         // Recebe dano caso colida com algum inimigo
         // TODO: ser arremessado ao tomar dano
         if (col.gameObject.CompareTag("AncientTree"))
+            TakenDamage(3);
+
+        else if (col.gameObject.CompareTag("SandMonsterMinor") || col.gameObject.CompareTag("SandMonsterThrown"))
+            TakenDamage(1);
+
+        else if (col.gameObject.CompareTag("SandMonster"))
             TakenDamage(2);
-
-        else if (col.gameObject.CompareTag("Enemy_1"))
-            TakenDamage(1);
-
-        else if (col.gameObject.CompareTag("EnemyBullet"))
-            TakenDamage(1);
 
         // if (halfLife > 0)
         //AnimController.SetBool("isTakingDamage", true);
@@ -157,14 +157,14 @@ public class MainCharMove : MonoBehaviour {
     {
         halfLife -= damage;
 
-        if (halfLife > 0) ;
+        //if (halfLife > 0) ;
             //AnimController.SetBool("isTakingDamage", true);
 
-        else
-        {
+       // else
+        //{
             //AnimController.SetBool("isDying", true);
             //GameOver
-        }
+        //}
     }
 
 	// Método de criação do GameObject Shot

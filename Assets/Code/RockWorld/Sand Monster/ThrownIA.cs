@@ -7,18 +7,11 @@ public class ThrownIA : MonoBehaviour {
 
     public Transform sandMonsterMinor;  // Prefab do npc a ser criado quando houver uma colisão
 
-    Transform sandMonsterThrown;
-    Transform target;                   // Armazena a localização do jogador
-
     Rigidbody2D rgbd_Thrown;
 
     void Start()
     {
         rgbd_Thrown = GetComponent<Rigidbody2D>();
-        sandMonsterThrown = GetComponent<Transform>();
-
-        // Define o alvo
-        target = GameObject.FindGameObjectWithTag("Player").transform;
 
         rgbd_Thrown.velocity = new Vector2(-speed, 0) * transform.localScale.x;
     }

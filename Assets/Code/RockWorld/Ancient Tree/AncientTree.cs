@@ -13,13 +13,12 @@ public class AncientTree : MonoBehaviour {
     */
 
     public float speed;
-    public float home;
 
     public bool lostPlayer;
     public bool canWalk;
     public bool isDead;
     public bool isWaiting;
-    public bool onGround;
+    public bool LookingAtRight;
 
     public int life;                // Vida do personagem
     public int playerDamage;        // Dano que o jogador causa a este npc
@@ -36,9 +35,6 @@ public class AncientTree : MonoBehaviour {
         AnimController = GetComponent<Animator>();
         rgbd_ancientTree = GetComponent<Rigidbody2D>();
 
-        // Definindo a posição inicial como origem
-        home = transform.position.x;
-
         // Definindo o alvo
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -52,22 +48,36 @@ public class AncientTree : MonoBehaviour {
         lostPlayer = true;
         canWalk = false;
         isDead = false;
-        onGround = false;
+        LookingAtRight = false;
     }
 	
 	void Update () {
-        if (canWalk)
+        if (canWalk && !isWaiting)
         {
             // Caso o jogador esteja no "campo de visão" do npc, ele o persegue
             if (!lostPlayer && !isDead)
             {
+                if (target.position.x > transform.position.x && LookingAtRight == false)
+                {
+                    Vector3 scale = ancientTree.localScale;
+                    scale.x *= -1;
+                    ancientTree.localScale = scale;
+
+                    LookingAtRight = true;
+                }
+
+                else if (target.position.x < transform.position.x && LookingAtRight == true)
+                {
+                    Vector3 scale = ancientTree.localScale;
+                    scale.x *= -1;
+                    ancientTree.localScale = scale;
+
+                    LookingAtRight = false;
+                }
+
                 ancientTree.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
                 AnimController.SetBool("isWalking", true);
             }
-
-            // TODO:
-            // else if (lostPLayer && !isDead)
-            // Voltar a origem
 
             else
                 AnimController.SetBool("isWalking", false);
@@ -77,8 +87,14 @@ public class AncientTree : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Acorda o npc caso ele esteja dormindo
-        if (isWaiting)
-            isWaiting = false;
+        if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Shot"))
+        {
+            if (!canWalk)
+                canWalk = true;
+
+            if (isWaiting)
+                isWaiting = false;
+        }
 
         // Se a bala acertar o npc
         if (collision.gameObject.tag == "Shot")
@@ -88,8 +104,6 @@ public class AncientTree : MonoBehaviour {
             // Caso o npc morra ao receber dano
             if (life < 1)
             {
-                // TODO: apenas executar o bloco abaixo caso onGround == true;
-                // Congela o sprite e desabilita o colisor
                 GetComponent<Collider2D>().enabled = false;
                 rgbd_ancientTree.constraints = RigidbodyConstraints2D.FreezePosition;
 
@@ -102,8 +116,8 @@ public class AncientTree : MonoBehaviour {
             }
 
             // Caso o npc receba dano mas continue vivo
-            else if (life > 0)
-                AnimController.SetBool("isTakingDamage", true);
+            //else if (life > 0)
+                //AnimController.SetBool("isTakingDamage", true);
         }
 
         // Se o jogador colidir com o npc
@@ -114,42 +128,21 @@ public class AncientTree : MonoBehaviour {
         }
     }
 
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        // Verifica se o npc está no chão
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            onGround = true;
-        }
-    }
-
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
             AnimController.SetBool("isAttacking", false);
-        }
-
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            onGround = false;
-        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
             lostPlayer = false;
-        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
             lostPlayer = true;
-            canWalk = true;
-        }
     }
 }

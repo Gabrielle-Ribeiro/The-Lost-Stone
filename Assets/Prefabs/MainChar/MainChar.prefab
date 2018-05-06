@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1434781914979852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.32, y: -0.58, z: 0}
+  m_LocalPosition: {x: -9.98, y: -2.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4568059049974888}
@@ -105,8 +105,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.079529695, y: 0.0662748}
-  m_Size: {x: 0.8633669, y: 2.4274504}
+  m_Offset: {x: -0.09324828, y: 0.076992154}
+  m_Size: {x: 0.8359297, y: 2.3785765}
   m_Direction: 0
 --- !u!95 &95814139026882248
 Animator:
@@ -142,8 +142,6 @@ MonoBehaviour:
   force: 8
   mainCharRigidbody: {fileID: 50095820765553954}
   jump: 0
-  allowMovRight: 1
-  allowMovLeft: 1
   shotingRate: 0.1
   shotCoolDown: 0
   barrel: {fileID: 4568059049974888}
