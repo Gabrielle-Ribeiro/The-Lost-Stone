@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SandMonsterIA : MonoBehaviour {
 
-    public int life;
-    public int playerDamage;
+    public int life = 15;
 
     public bool lostPlayer;
     public bool isDead;
@@ -50,7 +49,7 @@ public class SandMonsterIA : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("Shot"))
         {
-            life -= playerDamage;
+            life -= 1;
 
             if (life == 1)
                 TransformIntoMinor();

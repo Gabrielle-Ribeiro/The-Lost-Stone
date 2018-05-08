@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1739838291042836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.181722, y: 0.32239032, z: 0}
+  m_LocalPosition: {x: 42.91, y: 0.55, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,7 +64,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!60 &60061218626081776
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -116,7 +116,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.117590666, y: 0.20261192}
+  m_Offset: {x: -2.221631, y: 0.20261192}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -127,7 +127,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.2315235, y: 1.6852238}
+  m_Size: {x: 4.5530796, y: 1.6852238}
   m_EdgeRadius: 0
 --- !u!95 &95591495994436538
 Animator:
@@ -167,8 +167,6 @@ MonoBehaviour:
     type: 2}
   sandMonsterMinor: {fileID: 4710348384777792, guid: 415302cefb14a1149aa9fc5a7d181d9d,
     type: 2}
-  spriteMax: {fileID: 21300000, guid: 0638e5e6bcd04944d84d3320b38d9809, type: 3}
-  spriteMedium: {fileID: 21300000, guid: decf81abbe055a94091d1d349f2cf963, type: 3}
 --- !u!212 &212201427680035708
 SpriteRenderer:
   m_ObjectHideFlags: 1
