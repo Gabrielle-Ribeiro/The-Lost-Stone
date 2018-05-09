@@ -157,8 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6883afceb6397c14da0f64c65c1336c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
-  playerDamage: 0
+  life: 15
+  playerDamage: 1
   lostPlayer: 0
   isDead: 0
   isWaiting: 0

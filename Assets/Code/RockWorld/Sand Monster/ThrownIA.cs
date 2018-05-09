@@ -3,42 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ThrownIA : MonoBehaviour {
-    public float speed;
+    public float speed;                 // Velocidade do arremessável no eixo X
 
     public Transform sandMonsterMinor;  // Prefab do npc a ser criado quando houver uma colisão
 
-    Rigidbody2D rgbd_Thrown;
+    Rigidbody2D rgbd_Thrown;            // Permite controlar a velocidade do arremessável
 
-    void Start()
-    {
-        rgbd_Thrown = GetComponent<Rigidbody2D>();
+    void Start () {
+        rgbd_Thrown = GetComponent<Rigidbody2D>(); 
 
+        // Define a velocidade do arremessável no eixo X
+        // Velocidade negativada para que o arremessável vá para a esquerda
         rgbd_Thrown.velocity = new Vector2(-speed, 0) * transform.localScale.x;
     }
-	
-	void Update () {
-
-	}
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        // Se acertar uma bala no personagem principal
+        // Destroi o arremessável se o mesmo for atingido por uma bala
         if (col.gameObject.CompareTag("Shot"))
         {
             DestroyObject(gameObject, 0);
         }
 
-        // Se acertar o personagem principal
+        // Destroi o arremessável se o mesmo atingir um jogador
         else if (col.gameObject.CompareTag("Player"))
             DestroyObject(gameObject, 0);
 
-        // Se acertar qualquer outra coisa menos se for algum sandMonster grande, cria o monstro menor
+        // Cria um Sand Monster Minor caso atinja qualquer outra coisa
+        // FIX: limitação implementada para que o arremessável não crie um Minor assim que for gerado
+        // o arremessável colide com o Sand Monster ao ser gerado
         else if (!col.gameObject.CompareTag("SandMonster"))
         {
             DestroyObject(gameObject, 0);
 
-            var BulletTransform = Instantiate(sandMonsterMinor) as Transform;
-            BulletTransform.position = transform.position;
+            var BulletTransform = Instantiate(sandMonsterMinor) as Transform;   // Instancia um Minor
+            BulletTransform.position = transform.position;                      // Define a posição do Minor como a posição atual deste gameObject
         }
     }
 }
