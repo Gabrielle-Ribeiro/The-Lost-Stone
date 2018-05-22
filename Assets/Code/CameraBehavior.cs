@@ -6,7 +6,7 @@ public class CameraBehavior : MonoBehaviour {
 
 	// Variáveis usadas na movimentação da câmera
 	public Transform Target; 
-	public Vector2 Offset = new Vector2(9.22f, 1f);
+	public Vector2 Offset = new Vector2(0f, 0f);
 
 	void Start () {
 		// Pega as coordenadas do GameObject MainChar e guarda na variável Target
