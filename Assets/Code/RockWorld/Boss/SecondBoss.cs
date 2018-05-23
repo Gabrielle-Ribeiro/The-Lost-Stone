@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossMov : MonoBehaviour {
+public class SecondBoss : MonoBehaviour {
 
 	public Rigidbody2D bossRigidbody;
 
 	// Variáveis que controlam a movimentação do Boss
-	public float speed = 0.5f;
+	public float speed = 2.5f;
 	public int direction = -1;
 	public bool canWalk = true;
 
@@ -15,10 +15,6 @@ public class BossMov : MonoBehaviour {
 	// Variáveis que de controle da vida do Boss
 	public bool bossIsAlive = true;
 	public float bossLife = 10f;
-
-	//Variável de criação do segundo Boss
-	public Transform secondBossCreation;
-	public GameObject secondBoss;
 
 	void Start () {
 		bossRigidbody = GetComponent<Rigidbody2D> ();
@@ -30,7 +26,7 @@ public class BossMov : MonoBehaviour {
 		}
 
 		if(bossIsAlive && canWalk){
-				bossRigidbody.velocity = new Vector2 (speed * direction, bossRigidbody.velocity.y);
+			bossRigidbody.velocity = new Vector2 (speed * direction, bossRigidbody.velocity.y);
 		}
 	}
 
@@ -65,16 +61,7 @@ public class BossMov : MonoBehaviour {
 	// Morte do Boss
 	void BossDead(){
 		bossIsAlive = false;
-		SecondBossCreation ();
 		Destroy (this.gameObject);
 	}
 
-	/* Criação do GameObject da segunda forma do Boss. Esse método é chamado quando o Boss na 
-	 * primeira forma é morto
-	 */
-	void SecondBossCreation(){
-		var cloneSecondBoss = Instantiate(secondBoss, secondBossCreation.position, Quaternion.identity) as GameObject;
-	}
-				
 }
-

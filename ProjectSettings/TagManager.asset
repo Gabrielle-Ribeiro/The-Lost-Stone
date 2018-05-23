@@ -15,6 +15,8 @@ TagManager:
   - SandMonster
   - SandMonsterMinor
   - SandMonsterThrown
+  - BossLimit
+  - BossCreation
   layers:
   - Default
   - TransparentFX

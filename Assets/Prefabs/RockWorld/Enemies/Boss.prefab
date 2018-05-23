@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1588989769736072}
   m_IsPrefabParent: 1
+--- !u!1 &1152690952933536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4378107162177392}
+  m_Layer: 0
+  m_Name: BossCreation
+  m_TagString: BossCreation
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1588989769736072
 GameObject:
   m_ObjectHideFlags: 0
@@ -23,6 +38,9 @@ GameObject:
   - component: {fileID: 50668203610319136}
   - component: {fileID: 61125305289893024}
   - component: {fileID: 60393828231185552}
+  - component: {fileID: 61742079715637146}
+  - component: {fileID: 61365798924794438}
+  - component: {fileID: 114970348825851262}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -30,6 +48,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4378107162177392
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152690952933536}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.278, y: -0.049, z: 3.0597868}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4395288327872406}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4395288327872406
 Transform:
   m_ObjectHideFlags: 1
@@ -37,9 +68,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1588989769736072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 577.25, y: 1.67, z: -3}
+  m_LocalPosition: {x: 573.04, y: 0.11, z: -3}
   m_LocalScale: {x: 4, y: 4, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4378107162177392}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -106,24 +138,30 @@ PolygonCollider2D:
       - {x: -0.674057, y: -0.57979083}
       - {x: -0.6187439, y: -0.80958164}
       - {x: -0.54022217, y: -0.8632221}
-      - {x: -0.39575195, y: -0.88384974}
-      - {x: -0.29959106, y: -0.858745}
+      - {x: -0.50645447, y: -0.8917947}
+      - {x: -0.39575195, y: -0.8931819}
+      - {x: -0.2879181, y: -0.8750763}
+      - {x: -0.13386536, y: -0.898118}
       - {x: -0.040924072, y: -0.9052641}
+      - {x: 0.01802063, y: -0.9172621}
       - {x: 0.06399536, y: -0.9087106}
       - {x: 0.1444397, y: -0.89615864}
-      - {x: 0.2107544, y: -0.86728084}
-      - {x: 0.24082947, y: -0.8576993}
-      - {x: 0.23970795, y: -0.8654953}
+      - {x: 0.2677765, y: -0.8979505}
+      - {x: 0.23875427, y: -0.87428}
+      - {x: 0.26182556, y: -0.88569576}
+      - {x: 0.28170776, y: -0.90982306}
       - {x: 0.23858643, y: -0.8732913}
-      - {x: 0.28378296, y: -0.84338176}
-      - {x: 0.37471008, y: -0.8576992}
-      - {x: 0.4253235, y: -0.8474901}
-      - {x: 0.50538635, y: -0.8652955}
-      - {x: 0.5870209, y: -0.8980094}
-      - {x: 0.5407257, y: -0.8701246}
-      - {x: 0.6359558, y: -0.9132221}
-      - {x: 0.68785095, y: -0.9178506}
-      - {x: 0.7473602, y: -0.9183266}
+      - {x: 0.2599182, y: -0.9013243}
+      - {x: 0.3444519, y: -0.88770944}
+      - {x: 0.40737915, y: -0.8763635}
+      - {x: 0.46266174, y: -0.87082046}
+      - {x: 0.54039, y: -0.9049572}
+      - {x: 0.61268616, y: -0.9190067}
+      - {x: 0.5920563, y: -0.8724576}
+      - {x: 0.6149597, y: -0.91788816}
+      - {x: 0.71118164, y: -0.92951584}
+      - {x: 0.733902, y: -0.9320493}
+      - {x: 0.7613678, y: -0.92999184}
       - {x: 0.7846985, y: -0.903013}
       - {x: 0.7791748, y: -0.90874505}
       - {x: 0.7791748, y: -0.80041826}
@@ -140,7 +178,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.18861675, y: -0.31030488}
+  m_Offset: {x: -0.725235, y: -0.31030488}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -151,8 +189,77 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.3090515, y: 1.313364}
+  m_Size: {x: 0.79815674, y: 1.313364}
   m_EdgeRadius: 0
+--- !u!61 &61365798924794438
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1588989769736072}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.78100586, y: -1.1429131}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.08, y: 2.08}
+    newSize: {x: 2.08, y: 2.08}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16375732, y: 0.28360593}
+  m_EdgeRadius: 0
+--- !u!61 &61742079715637146
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1588989769736072}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.97888947, y: -1.1264627}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.08, y: 2.08}
+    newSize: {x: 2.08, y: 2.08}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.15727234, y: 0.2816471}
+  m_EdgeRadius: 0
+--- !u!114 &114970348825851262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1588989769736072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6cd68eb817b7b4697ad0c9749bd5bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossRigidbody: {fileID: 50668203610319136}
+  speed: 2
+  direction: -1
+  canWalk: 1
+  bossIsAlive: 1
+  bossLife: 10
+  secondBossCreation: {fileID: 4378107162177392}
+  secondBoss: {fileID: 1034038266812480, guid: 46f9c6b9f5535f647b899079473fb4aa, type: 2}
 --- !u!212 &212048507575134646
 SpriteRenderer:
   m_ObjectHideFlags: 1
