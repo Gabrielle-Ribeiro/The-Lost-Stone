@@ -17,14 +17,17 @@ public class SecondBoss : MonoBehaviour {
 	public float bossLife = 10f;
 
 	void Start () {
-		bossRigidbody = GetComponent<Rigidbody2D> ();
+		// Torna possível a manipulação das propriedades do componente rigidbody do Boss
+		bossRigidbody = GetComponent<Rigidbody2D> (); 
 	}
 
 	void Update () {
+		// Se a vida do Boss chegar a 0, o método responsável por sua morte é chamado
 		if(bossLife == 0){
 			BossDead ();
 		}
 
+		// Se o Boss estiver vivo e longe do personagem, ele se movimenta para a esquerda e direita
 		if(bossIsAlive && canWalk){
 			bossRigidbody.velocity = new Vector2 (speed * direction, bossRigidbody.velocity.y);
 		}
@@ -39,7 +42,7 @@ public class SecondBoss : MonoBehaviour {
 	}
 
 	void OnTriggerExit2D(Collider2D collision){
-		// Quando o Boss sai do espaço delimitado de sua movimentação a sua direção é alterada
+		// Quando o Boss sai do espaço delimitado de sua movimentação, a sua direção é alterada
 		if(collision.CompareTag("BossLimit") && bossIsAlive){
 			direction = -direction;
 		}

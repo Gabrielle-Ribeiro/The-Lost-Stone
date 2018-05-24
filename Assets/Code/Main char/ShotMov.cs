@@ -21,7 +21,7 @@ public class ShotMov : MonoBehaviour {
 		/* Destruição do GameObject Shot após 8 segundos caso ele não colida com 
 		 * nenhum inimigo
 		 */
-		Destroy (gameObject, 8f);
+		Destroy (gameObject, 2f);
 	}
 
 	void Update () {

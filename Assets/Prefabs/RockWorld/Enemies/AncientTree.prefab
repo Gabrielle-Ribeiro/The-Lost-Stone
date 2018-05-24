@@ -38,8 +38,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173181876415286}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 113.58026, y: -1.8865992, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -425.44, y: 5.33, z: 0.3125}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -143,13 +143,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fab641304ccff845a0b18c13e2fa6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 2
   lostPlayer: 0
   canWalk: 0
   isDead: 0
   isWaiting: 0
   LookingAtRight: 0
-  life: 20
+  life: 10
   playerDamage: 1
 --- !u!212 &212419559699076056
 SpriteRenderer:

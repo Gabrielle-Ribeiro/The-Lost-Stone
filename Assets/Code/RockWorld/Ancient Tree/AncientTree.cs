@@ -89,16 +89,6 @@ public class AncientTree : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Acorda o npc caso ele esteja dormindo
-        if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Shot"))
-        {
-            if (!canWalk)
-                canWalk = true;
-
-            if (isWaiting)
-                isWaiting = false;
-        }
-
         // Se a bala acertar o npc
         if (collision.gameObject.tag == "Shot")
         {
@@ -140,8 +130,16 @@ public class AncientTree : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-            lostPlayer = false;
+		// Acorda o npc caso ele esteja dormindo
+		if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Shot"))
+		{
+			lostPlayer = false;
+			if (!canWalk)
+				canWalk = true;
+
+			if (isWaiting)
+				isWaiting = false;
+		}       
     }
 
     void OnTriggerExit2D(Collider2D collision)

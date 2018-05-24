@@ -88,7 +88,7 @@ public class MainCharMove : MonoBehaviour {
 			shotCoolDown -= Time.deltaTime;
 		}
 		// Libera um tiro (GameObject Shot) quando o usuário clica nas teclas M ou J
-		if(Input.GetKey(KeyCode.M) || Input.GetKey(KeyCode.J)){
+		if(Input.GetKey(KeyCode.Space)){
             AnimController.SetBool("isFiring", true);
 			Fire ();
 			shotCoolDown = shotingRate;

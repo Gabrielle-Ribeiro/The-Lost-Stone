@@ -21,14 +21,16 @@ public class BossMov : MonoBehaviour {
 	public GameObject secondBoss;
 
 	void Start () {
+		// Torna possível a manipulação das propriedades do componente rigidbody do Boss
 		bossRigidbody = GetComponent<Rigidbody2D> ();
 	}
 
 	void Update () {
+		// Se a vida do Boss chegar a 0, o método responsável por sua morte é chamado
 		if(bossLife == 0){
 			BossDead ();
 		}
-
+		// Se o Boss estiver vivo e longe do personagem, ele se movimenta para a esquerda e direita
 		if(bossIsAlive && canWalk){
 				bossRigidbody.velocity = new Vector2 (speed * direction, bossRigidbody.velocity.y);
 		}

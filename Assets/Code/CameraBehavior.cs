@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class CameraBehavior : MonoBehaviour {
 
-	// Variáveis usadas na movimentação da câmera
-	public Transform Target; 
-	public Vector2 Offset = new Vector2(0f, 0f);
+	// Variáveis que determinam os limites de movimentação da câmera nos eixos x e y
+	[SerializeField]
+	private float xMax;
+	[SerializeField]
+	private float yMax;
+	[SerializeField]
+	private float xMin;
+	[SerializeField]
+	private float yMin;
+
+	// Variável usada para guardar a posição do personagem principal
+	private Transform target;
 
 	void Start () {
-		// Pega as coordenadas do GameObject MainChar e guarda na variável Target
-		Target = GameObject.Find ("MainChar").transform;
-		Vector3 targetPosition = this.transform.position;
-		targetPosition.x = Target.position.x + Offset.x;
-		this.transform.position = targetPosition;
+		// Determina que as propriedades do GameObject guardadas em target serão as do Player
+		target = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 
-	void Update () {
-		// Faz com que a câmera siga o MainChar
-		Vector3 targetPosition = this.transform.position;
-		targetPosition.x = Target.position.x + Offset.x;
-		this.transform.position = targetPosition;
+	void LateUpdate () {
+		// Faz com que a câmera siga a movimentação do Player dentro dos limites determinados nos eixos x e y
+		transform.position = new Vector3 (Mathf.Clamp (target.position.x, xMin, xMax), Mathf.Clamp (target.position.y, yMin, yMax), transform.position.z);
 	}
 }
