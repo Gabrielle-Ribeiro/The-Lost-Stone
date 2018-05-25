@@ -137,10 +137,6 @@ public class MainCharMove : MonoBehaviour {
             //GameOver
 
 
-		// Se o MainChar cair em um "buraco" ele perde todas as suas vidas
-		if(col.gameObject.CompareTag("Hole")){
-			halfLife = 0;
-		}
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -164,6 +160,13 @@ public class MainCharMove : MonoBehaviour {
 		}
 	}
 		
+	void OntriggerEnter2D(Collider2D coll){
+		// Se o MainChar cair em um "buraco" ele perde todas as suas vidas
+		if(coll.gameObject.CompareTag("Hole")){
+			halfLife = 0;
+		}
+	}
+
     //Método que retira vida do personagem conforme o dano aplicado
     void TakenDamage(int damage)
     {
