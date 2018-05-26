@@ -20,19 +20,22 @@ public class BossMov : MonoBehaviour {
 	public Transform secondBossCreation;
 	public GameObject secondBoss;
 
+    Animator AnimController;
+
 	void Start () {
 		// Torna possível a manipulação das propriedades do componente rigidbody do Boss
 		bossRigidbody = GetComponent<Rigidbody2D> ();
+        AnimController = GetComponent<Animator>();
 	}
 
 	void Update () {
 		// Se a vida do Boss chegar a 0, o método responsável por sua morte é chamado
-		if(bossLife == 0){
+		if(bossLife <= 0){
 			BossDead ();
 		}
 		// Se o Boss estiver vivo e longe do personagem, ele se movimenta para a esquerda e direita
 		if(bossIsAlive && canWalk){
-				bossRigidbody.velocity = new Vector2 (speed * direction, bossRigidbody.velocity.y);
+		    bossRigidbody.velocity = new Vector2 (speed * direction, bossRigidbody.velocity.y);
 		}
 	}
 
@@ -40,7 +43,7 @@ public class BossMov : MonoBehaviour {
 		//Quando o jogador se aproxima do Boss, a movimentação do Boss é parada e o ataque é ativado
 		if(collision.gameObject.CompareTag("Player")){
 			canWalk = false;
-			//AnimController.SetBool("isAttacking", true);
+			AnimController.SetBool("Melee", true);
 		}
 	}
 
@@ -64,11 +67,19 @@ public class BossMov : MonoBehaviour {
 	}
 
 	// Morte do Boss
-	void BossDead(){
-		bossIsAlive = false;
-		SecondBossCreation ();
-		Destroy (this.gameObject);
-	}
+	void BossDead() {
+        if (bossIsAlive)
+        {
+            AnimController.SetBool("secondForm", true);
+
+            bossRigidbody.constraints = RigidbodyConstraints2D.FreezePosition;          // Congela posição atual
+            GetComponent<PolygonCollider2D>().enabled = false;                          // Desliga os colliders
+
+            SecondBossCreation();
+        }
+
+        bossIsAlive = false;
+    }
 
 	/* Criação do GameObject da segunda forma do Boss. Esse método é chamado quando o Boss na 
 	 * primeira forma é morto
