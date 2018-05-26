@@ -99,9 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9645bea60016c51448996dcfa9322e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  sandMonsterMinor: {fileID: 4710348384777792, guid: 415302cefb14a1149aa9fc5a7d181d9d,
-    type: 2}
+  speed: 10
 --- !u!212 &212745520420452938
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -17,14 +17,17 @@ public class SandMonsterIA : MonoBehaviour {
     float AttackCooldownDefault;        // Tempo entre dois ataques
 
     Animator AnimController;            // Controla as animações do npc
+    PolygonCollider2D cldr;
 
-    public Transform sandMonsterThrown; // prefab do Attack (Thrown)
-    public Transform sandMonsterMinor;  // Prefab do SandMonsterMinor=
+    public Transform sandMonsterThrown; // Prefab do Attack (Thrown)
+    public Transform sandMonsterMinor;  // Prefab do SandMonsterMinor
+    public Transform bulletSpawn;       // Local a ser criado o ataque
     
 	void Start () {
         // Definindo os componentes do npc
         // Permite:
         AnimController = GetComponent<Animator>();  // Modificar variaveis para definir animação
+        cldr = GetComponent<PolygonCollider2D>();   // Modificar condições do colisor
 
         // Define o tempo que o npc deve aguardar até poder atacar novamente
         AttackCooldownDefault = AttackCooldown;
@@ -36,7 +39,7 @@ public class SandMonsterIA : MonoBehaviour {
         isDead = false;
         isWaiting = true;
 
-        AnimController.SetBool("isWaiting", true);
+        AnimController.SetBool("isUpperGround", false);
     }
 	
 	void Update () {
@@ -63,20 +66,14 @@ public class SandMonsterIA : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        // Acorda o npc
         if (collision.gameObject.CompareTag("Player"))
-        {
-            lostPlayer = false;
-            isWaiting = false;
-
-            AnimController.SetBool("isWaiting", false);
-        }
+            Appears (true);
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-            lostPlayer = true;
+            Appears (false);
     }
 
 
@@ -92,7 +89,7 @@ public class SandMonsterIA : MonoBehaviour {
             AttackCooldown = AttackCooldownDefault;     // Reinicia o cooldown 
 
             var shotTransform = Instantiate(sandMonsterThrown) as Transform;    // Instancia um golpe
-            shotTransform.position = transform.position;                        // Define a posição do golpe como a posição atual deste npc
+            shotTransform.position = bulletSpawn.position;                        // Define a posição do golpe como a posição atual deste npc
         }
     }
 
@@ -103,5 +100,23 @@ public class SandMonsterIA : MonoBehaviour {
 
         var BulletTransform = Instantiate(sandMonsterMinor) as Transform;   // Instancia um Minor
         BulletTransform.position = transform.position;                      // Define a posição do Minor como a posição atual deste npc
+    }
+
+    void Appears(bool show)
+    {
+        if (show)
+        {
+            lostPlayer = false;
+            isWaiting = false;
+        }
+
+        else
+            lostPlayer = true;
+
+        // Define o estado do npc (vísivel / não visível)
+        AnimController.SetBool("isUpperGround", show);
+
+        // Ativa / desativa o colisor do npc
+        cldr.enabled = show;
     }
 }

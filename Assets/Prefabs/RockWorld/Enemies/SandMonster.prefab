@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1739838291042836}
   m_IsPrefabParent: 1
+--- !u!1 &1094751125666912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4780905672018670}
+  m_Layer: 0
+  m_Name: bulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1739838291042836
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,6 +40,7 @@ GameObject:
   - component: {fileID: 61847332028373796}
   - component: {fileID: 114285694482326706}
   - component: {fileID: 95591495994436538}
+  - component: {fileID: 68900828985651242}
   m_Layer: 0
   m_Name: SandMonster
   m_TagString: SandMonster
@@ -39,10 +55,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1739838291042836}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -501.04257, y: 7.767082, z: 0.3125}
+  m_LocalPosition: {x: 3.09, y: -1.81, z: 0.3125}
   m_LocalScale: {x: 2, y: 2, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4780905672018670}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4780905672018670
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1094751125666912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.43, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4069524190999214}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50786438466231884
@@ -129,6 +159,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.5530796, y: 1.6852238}
   m_EdgeRadius: 0
+--- !u!68 &68900828985651242
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1739838291042836}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.12726724, y: -0.63954735}
+  - {x: 0.14739823, y: -0.63911295}
 --- !u!95 &95591495994436538
 Animator:
   serializedVersion: 3
@@ -167,6 +214,7 @@ MonoBehaviour:
     type: 2}
   sandMonsterMinor: {fileID: 4710348384777792, guid: 415302cefb14a1149aa9fc5a7d181d9d,
     type: 2}
+  bulletSpawn: {fileID: 4780905672018670}
 --- !u!212 &212201427680035708
 SpriteRenderer:
   m_ObjectHideFlags: 1

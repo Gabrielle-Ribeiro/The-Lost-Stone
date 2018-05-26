@@ -89,6 +89,10 @@ public class AncientTree : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // Acorda o npc caso ele esteja dormindo
+        if (isWaiting && !collision.gameObject.CompareTag("Ground"))
+            isWaiting = false;
+
         // Se a bala acertar o npc
         if (collision.gameObject.tag == "Shot")
         {
@@ -101,17 +105,12 @@ public class AncientTree : MonoBehaviour {
                 rgbd_ancientTree.constraints = RigidbodyConstraints2D.FreezePosition;   // Congela posição atual
 
                 isDead = true;
-
-                // Correção bug: Arvore Fantasma
                 canWalk = false;
                 
                 AnimController.SetBool("isDying", true);
             }
 
-            // TODO: animação entra em conflito caso isTakingDamage == true;
-            // Caso o npc receba dano mas continue vivo
-            //else if (life > 0)
-                //AnimController.SetBool("isTakingDamage", true);
+            // TODO: animação isTakingDamage
         }
 
         // Se o jogador colidir com o npc
@@ -128,24 +127,21 @@ public class AncientTree : MonoBehaviour {
             AnimController.SetBool("isAttacking", false);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
-		// Acorda o npc caso ele esteja dormindo
-		if(collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Shot"))
+		// Persegue o jogador caso ele fique dentro do trigger
+		if(!isWaiting && collision.gameObject.CompareTag("Player"))
 		{
-			lostPlayer = false;
+            lostPlayer = false;
+
 			if (!canWalk)
 				canWalk = true;
-
-			if (isWaiting)
-				isWaiting = false;
 		}       
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-		if (collision.gameObject.CompareTag("Player")){
+		if (collision.gameObject.CompareTag("Player"))
             lostPlayer = true;
-		}
     }
 }
