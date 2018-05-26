@@ -60,7 +60,6 @@ public class BossMov : MonoBehaviour {
 		// Quando um tiro atinge o Boss, ele recebe 0.5 de dano e o GameObject Shot é detruído
 		if(collision.gameObject.CompareTag("Shot")){
 			bossLife -= 0.5f;
-			Destroy (collision.gameObject);
 		}
 	}
 
