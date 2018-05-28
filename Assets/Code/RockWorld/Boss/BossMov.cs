@@ -60,7 +60,7 @@ public class BossMov : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
-		// Quando um tiro atinge o Boss, ele recebe 0.5 de dano e o GameObject Shot é detruído
+		// Quando um tiro atinge o Boss, ele recebe 0.5 de dano
 		if(collision.gameObject.CompareTag("Shot")){
 			bossLife -= 0.5f;
 		}

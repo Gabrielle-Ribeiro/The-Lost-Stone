@@ -17,6 +17,7 @@ TagManager:
   - SandMonsterThrown
   - BossLimit
   - BossCreation
+  - EnemyArea
   layers:
   - Default
   - TransparentFX

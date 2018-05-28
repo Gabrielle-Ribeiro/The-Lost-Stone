@@ -2,77 +2,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BirdEnemy : MonoBehaviour {
+public class ParasiteEnemy : MonoBehaviour {
 
 	// Variáveis que controlam a movimentação do inimigo
 	public float speed = 1.5f;
 	public int direction = -1;
-	public bool followPlayer = false;
 	public Rigidbody2D enemyRigidbody;
 	public Transform enemyTransform;
-	public Transform target;
 
 	// Variáveis que de controle da vida do inimigo
 	public bool enemyIsAlive = true;
-	public float enemyLife = 10f;
+	public int enemyLife = 10;
 
 	void Start () {
+		// Possibilita a manipulação dos componentes rigidbody e transform do inimigo
 		enemyRigidbody = GetComponent<Rigidbody2D> ();
 		enemyTransform = GetComponent<Transform> ();
 
-		// Definindo o jogador como alvo
-		target = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 
 	void Update () {
-		
+
+		// Se a vida chegar a 0, o método de morte do inimigo é chamado
 		if(enemyLife <= 0){
 			EnemyDead ();
 		}
 
+		// Se o inimigo está vivo, ele se movimenta para a esquerda e direita
 		if(enemyIsAlive){
-			if(followPlayer){
-				enemyTransform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
-			}
-			else{
 				enemyRigidbody.velocity = new Vector2 (speed * direction, enemyRigidbody.velocity.y);
-			}
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D coll){
+		// Se o player entrar na área de trigger do inimigo, o ataque é ativado
 		if(coll.gameObject.CompareTag("Player")){
-			followPlayer = true;
+			EnemyAtack ();
 		}
+		// Se o inimigo chegar no limite de sua área de movimentação sua direção de movimentação é alterada
 		if(coll.CompareTag("EnemyArea")){
 			direction = -direction;
 			Flip ();
 		}
 	}
 
-	void OnTriggerExit2D(Collider2D coll){
-		if(coll.gameObject.CompareTag("Player")){
-			followPlayer = false;
-		}
-	}
-
 	void OnCollisionEnter2D(Collision2D coll){
-		if(coll.gameObject.CompareTag("Player")){
-			Atack ();
+		// Se o inimigo receber um tiro ele leva dano
+		if(coll.gameObject.CompareTag("Shot")){
+			enemyLife -= 1;
 		}
 	}
 
+	// Quando o inimigo muda de direção, a direção do seu sprite também é altearda
 	void Flip(){
 		Vector3 scale = enemyTransform.localScale;
 		scale.x *= -1;
 		enemyTransform.localScale = scale;
 	}
 
-	void Atack(){
+	// Método de ataque
+	void EnemyAtack(){
 
 	}
 
+	// Quando o inimigo morre, seu gameObject é destruído
 	void EnemyDead (){
 		enemyIsAlive = false;
 		Destroy (gameObject);
