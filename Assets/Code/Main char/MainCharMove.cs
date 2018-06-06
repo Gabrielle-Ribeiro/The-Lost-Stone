@@ -187,7 +187,7 @@ public class MainCharMove : MonoBehaviour {
 		if(shotCoolDown <= 0f){
 			if(shot != null){ //Verifica se o GameObject shot foi criado
 				var cloneShot = Instantiate(shot, barrel.position, Quaternion.identity) as GameObject;
-				cloneShot.transform.localScale = this.transform.localScale;
+				//cloneShot.transform.localScale = this.transform.localScale;
 			}
 		}
 	}
