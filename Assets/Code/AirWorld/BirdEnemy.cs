@@ -12,7 +12,7 @@ public class BirdEnemy : MonoBehaviour {
 	public Transform enemyTransform;
 	public Transform target;
 
-	// Variáveis que de controle da vida do inimigo
+	// Variáveis de controle da vida do inimigo
 	public bool enemyIsAlive = true;
 	public float enemyLife = 10f;
 
