@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4002008285474084}
   - component: {fileID: 212317177073698422}
   - component: {fileID: 61938058637776936}
+  - component: {fileID: 95156420920152002}
   m_Layer: 0
   m_Name: BigHole
   m_TagString: Hole
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1302614235358442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.8438873, y: 1.8052102, z: -7.942969}
+  m_LocalPosition: {x: -2.81, y: 1.8052102, z: -7.942969}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -66,6 +67,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.137243, y: 1.6290574}
   m_EdgeRadius: 0
+--- !u!95 &95156420920152002
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1302614235358442}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b38efd578039b94394b377c612ac5a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &212317177073698422
 SpriteRenderer:
   m_ObjectHideFlags: 1

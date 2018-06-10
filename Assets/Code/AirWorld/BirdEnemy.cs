@@ -11,6 +11,8 @@ public class BirdEnemy : MonoBehaviour {
 	public Rigidbody2D enemyRigidbody;
 	public Transform enemyTransform;
 	public Transform target;
+	public Transform birdHouse;
+
 
 	// Variáveis de controle da vida do inimigo
 	public bool enemyIsAlive = true;
@@ -34,6 +36,8 @@ public class BirdEnemy : MonoBehaviour {
 
 		// Se o inimigo estiver vivo, sua movimentação ocorre
 		if(enemyIsAlive){
+			
+			enemyRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
 			// Se o player estiver dentro da área de trigger o inimigo segue ele
 			if(followPlayer){
 				if (target.position.x > transform.position.x && direction < 0)
@@ -51,8 +55,21 @@ public class BirdEnemy : MonoBehaviour {
 			}
 			// Caso contrário, o inimigo só se movimenta para a esquerda e direita dentro de um determinado limite
 			else{
+				
 				enemyRigidbody.velocity = new Vector2 (speed * direction, enemyRigidbody.velocity.y);
-				enemyRigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
+				/*if (birdHouse.position.x > transform.position.x && direction < 0)
+				{
+					Flip ();
+					direction = -direction;
+				}
+				else if (birdHouse.position.x < transform.position.x && direction > 0)
+				{
+					Flip ();
+					direction = -direction;
+				}
+
+				enemyTransform.position = Vector2.MoveTowards(birdHouse.position, transform.position, speed * Time.deltaTime);*/
+
 			}
 		}
 	}
