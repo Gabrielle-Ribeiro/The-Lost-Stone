@@ -11,7 +11,6 @@ public class BossMov : MonoBehaviour {
 	public int direction = -1;
 	public bool canWalk = true;
 
-
 	// Variáveis que de controle da vida do Boss
 	public bool bossIsAlive = true;
 	public float bossLife = 10f;
@@ -26,6 +25,8 @@ public class BossMov : MonoBehaviour {
 		// Torna possível a manipulação das propriedades do componente rigidbody do Boss
 		bossRigidbody = GetComponent<Rigidbody2D> ();
         AnimController = GetComponent<Animator>();
+
+        canWalk = false;
 	}
 
 	void Update () {
@@ -39,23 +40,10 @@ public class BossMov : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D collision){
-		//Quando o jogador se aproxima do Boss, a movimentação do Boss é parada e o ataque é ativado
-		if(collision.gameObject.CompareTag("Player")){
-			canWalk = false;
-			AnimController.SetBool("Melee", true);
-		}
-	}
-
 	void OnTriggerExit2D(Collider2D collision){
 		// Quando o Boss sai do espaço delimitado de sua movimentação a sua direção é alterada
 		if(collision.CompareTag("BossLimit") && bossIsAlive){
 			direction = -direction;
-		}
-		// Quando o jogador se afasta do Boss, o Boss volta a se movimentar
-		if(collision.gameObject.CompareTag("Player")){
-			//AnimController.SetBool("isAttacking", false);
-			canWalk = true;
 		}
 	}
 
@@ -74,11 +62,9 @@ public class BossMov : MonoBehaviour {
 
             bossRigidbody.constraints = RigidbodyConstraints2D.FreezePosition;          // Congela posição atual
             GetComponent<PolygonCollider2D>().enabled = false;                          // Desliga os colliders
-
-            SecondBossCreation();
+            
+            bossIsAlive = false;
         }
-
-        bossIsAlive = false;
     }
 
 	/* Criação do GameObject da segunda forma do Boss. Esse método é chamado quando o Boss na 
@@ -87,6 +73,11 @@ public class BossMov : MonoBehaviour {
 	void SecondBossCreation(){
 		var cloneSecondBoss = Instantiate(secondBoss, secondBossCreation.position, Quaternion.identity) as GameObject;
 	}
-				
+
+    // Impede que o boss comece sua rotina antes de spawnar
+    void Spawning()
+    {
+        canWalk = true;
+    }	
 }
 

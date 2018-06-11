@@ -55,3 +55,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: DeadBody
+    uniqueID: 915848321
+    locked: 0
+  - name: Items
+    uniqueID: 2820529003
+    locked: 0
+  - name: Enemies
+    uniqueID: 3907995009
+    locked: 0
+  - name: Player
+    uniqueID: 1170383503
+    locked: 0
+  - name: Ground
+    uniqueID: 3510541819
+    locked: 0
