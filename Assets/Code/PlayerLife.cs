@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour {
 
+	public float vidas;
+
 	// Use this for initialization
-	void Start () {
+	void CollisionEnter2D (Collision2D col) {
+
+		if (col.transform.tag == "DANO") {
+			vidas -= 5;
+		}
 		
 	}
 	
