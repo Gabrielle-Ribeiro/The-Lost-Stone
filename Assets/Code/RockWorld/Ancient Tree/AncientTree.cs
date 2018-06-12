@@ -110,7 +110,7 @@ public class AncientTree : MonoBehaviour {
                 AnimController.SetBool("isDying", true);
             }
 
-            // TODO: animação isTakingDamage
+            AnimController.SetBool("isTakingDamage", true);
         }
 
         // Se o jogador colidir com o npc
@@ -143,5 +143,14 @@ public class AncientTree : MonoBehaviour {
     {
 		if (collision.gameObject.CompareTag("Player"))
             lostPlayer = true;
+    }
+
+    void Combat (string Action)
+    {
+        if (Action == "Reset")
+        {
+            AnimController.SetBool("isAttacking", false);
+            AnimController.SetBool("isTakingDamage", false);
+        }
     }
 }
