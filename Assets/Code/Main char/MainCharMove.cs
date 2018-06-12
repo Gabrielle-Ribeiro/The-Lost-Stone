@@ -14,19 +14,24 @@ public class MainCharMove : MonoBehaviour {
 	public bool jump = false;
 
 	// Variáveis usadas na criação do tiro do MainChar
-	public float shotingRate = 0.1f; // Tempo entre um tiro e outro
+	public float shotingRate = 0.1f;    // Tempo entre um tiro e outro
 	public float shotCoolDown = 0f;
-	public Transform barrel; // GameObject Empty que cria a bala
-	public GameObject shot; // GameObject da bala 
+	public Transform barrel;            // GameObject Empty que cria a bala
+	public GameObject shot;             // GameObject da bala 
 
-    //Variável que determina o estado do MainChar
-    public Animator AnimController;
+    //Variável que determina a animação do MainChar
+    Animator AnimController;
 
     //Variável para vida do personagem
     //1 halfLife -> meio coração
     //Golpes pesados -> 1 coraçao de dano 
     //Golpes leves -> meio coraçao de dano
     public int halfLife;
+
+    // Variáveis utilizadas nos audios
+    public float vol;
+    public AudioClip audFire;
+    AudioSource AudController;
 
     void Start () {
 		/* Indica que com a variável mainCharTransform será possível manipular os valores das 
@@ -38,6 +43,10 @@ public class MainCharMove : MonoBehaviour {
 		 * propriedades do componente Rigidbody 2D do objeto MainChar
 		 */
 		mainCharRigidbody = GetComponent<Rigidbody2D> ();
+
+        // Atribui o componente AudioSource a AudController
+        AudController = GetComponent<AudioSource>();
+        AnimController = GetComponent<Animator>();
 
         AnimController.SetBool("inGround", false);
         AnimController.SetBool("isWalking", false);
@@ -84,14 +93,17 @@ public class MainCharMove : MonoBehaviour {
         }
 
         // Controle do tempo entre um tiro e outro
-        if (shotCoolDown > 0){
+        if (shotCoolDown > 0)
 			shotCoolDown -= Time.deltaTime;
-		}
+
 		// Libera um tiro (GameObject Shot) quando o usuário clica nas teclas M ou J
 		if(Input.GetKey(KeyCode.Space)){
             AnimController.SetBool("isFiring", true);
 			Fire ();
 			shotCoolDown = shotingRate;
+
+            // Toca o audio audFire
+            AudController.PlayOneShot(audFire, vol);
 		}
         else{
             AnimController.SetBool("isFiring", false);
@@ -151,9 +163,10 @@ public class MainCharMove : MonoBehaviour {
         }
     }
 
-    // Método que impede o MainChar de pular caso não esteja em contado com o chão
-    void OnCollisionExit2D(Collision2D ground){
-		if(ground.gameObject.CompareTag("Ground")){
+    void OnCollisionExit2D(Collision2D coll){
+
+        // Método que impede o MainChar de pular caso não esteja em contado com o chão
+        if (coll.gameObject.CompareTag("Ground")){
             AnimController.SetBool("inGround", false);
             AnimController.SetBool("isJumping", true);
 			jump = false;
