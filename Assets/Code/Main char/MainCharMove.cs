@@ -126,7 +126,7 @@ public class MainCharMove : MonoBehaviour {
             AnimController.SetBool("inGround", true);
             AnimController.SetBool("isJumping", false);
 			jump = true;
-		}
+		}  
 
         // Recebe dano caso colida com algum inimigo
         // TODO: ser arremessado ao tomar dano
