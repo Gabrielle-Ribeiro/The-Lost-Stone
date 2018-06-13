@@ -12,6 +12,7 @@ public class SandMonsterIA : MonoBehaviour {
     public bool lostPlayer;             // Caso o jogador esteja dentro do campo de visão do npc, lostPlayer = false;
     public bool isDead;                 // Caso o npc esteja morto, isDead = true;
     public bool isWaiting;              // Caso o jogador ainda não interagiu com o npc, isWaiting = true;
+    public bool isUpperGround;          // Caso npc não esteja escondido, isUpperGround = true;
 
     public float AttackCooldown;        // Tempo restante para o próximo ataque
     float AttackCooldownDefault;        // Tempo entre dois ataques
@@ -84,7 +85,7 @@ public class SandMonsterIA : MonoBehaviour {
             AttackCooldown -= Time.deltaTime;
 
         // Atira :D
-        else
+        else if (isUpperGround)
         {
             AttackCooldown = AttackCooldownDefault;     // Reinicia o cooldown 
 
@@ -118,5 +119,14 @@ public class SandMonsterIA : MonoBehaviour {
 
         // Ativa / desativa o colisor do npc
         cldr.enabled = show;
+    }
+
+    void Combat (string Action)
+    {
+        if (Action == "Hide")
+            isUpperGround = false;
+
+        if (Action == "Show")
+            isUpperGround = true;
     }
 }
