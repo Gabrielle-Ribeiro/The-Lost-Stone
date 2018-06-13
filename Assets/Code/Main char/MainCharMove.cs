@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainCharMove : MonoBehaviour {
  
@@ -177,8 +178,9 @@ public class MainCharMove : MonoBehaviour {
 		// Se o MainChar cair em um "buraco" ele perde todas as suas vidas
 		if(coll.gameObject.CompareTag("Hole")){
 			halfLife = 0;
-		}
-	}
+            SceneManager.LoadLevel("GameOver");
+                }
+            }
 
     //Método que retira vida do personagem conforme o dano aplicado
     void TakenDamage(int damage)
