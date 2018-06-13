@@ -22,7 +22,7 @@ GameObject:
   m_Layer: 0
   m_Name: bulletSpawn
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4660412927644837186, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1739838291042836}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.09, y: -1.81, z: 0.3125}
+  m_LocalPosition: {x: 3.2400706, y: -1.793007, z: 0.3125}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4780905672018670}
@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1094751125666912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43, y: 0, z: 0}
+  m_LocalPosition: {x: -0.77, y: -0.049, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4069524190999214}
@@ -209,7 +209,8 @@ MonoBehaviour:
   lostPlayer: 0
   isDead: 0
   isWaiting: 0
-  AttackCooldown: 7
+  isUpperGround: 0
+  AttackCooldown: 6.59128
   sandMonsterThrown: {fileID: 4332453777886032, guid: cf7d178988d7c0a4c98baa0a47f147eb,
     type: 2}
   sandMonsterMinor: {fileID: 4710348384777792, guid: 415302cefb14a1149aa9fc5a7d181d9d,
@@ -249,7 +250,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 0a513599bbac81f4b85a0748eb5fa917, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6dcdc0934b39d64188e23f9f6c66e1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
