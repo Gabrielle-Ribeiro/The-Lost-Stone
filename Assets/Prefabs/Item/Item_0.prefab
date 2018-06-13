@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212832374267273148}
   - component: {fileID: 61509953593900948}
   - component: {fileID: 114020914570393126}
+  - component: {fileID: 95773405658718018}
   m_Layer: 0
   m_Name: Item_0
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1083643803290868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.3, y: 2.9, z: -0.021263197}
+  m_LocalPosition: {x: -51.25, y: 0.39, z: 0.6732218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,6 +68,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5839844, y: 0.9915254}
   m_EdgeRadius: 0
+--- !u!95 &95773405658718018
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083643803290868}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c7429f3109f83f44193042427cfdf520, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114020914570393126
 MonoBehaviour:
   m_ObjectHideFlags: 1
