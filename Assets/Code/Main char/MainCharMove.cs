@@ -178,7 +178,7 @@ public class MainCharMove : MonoBehaviour {
 		// Se o MainChar cair em um "buraco" ele perde todas as suas vidas
 		if(coll.gameObject.CompareTag("Hole")){
 			halfLife = 0;
-            SceneManager.LoadLevel("GameOver");
+            //SceneManager.LoadLevel("GameOver");
                 }
             }
 
