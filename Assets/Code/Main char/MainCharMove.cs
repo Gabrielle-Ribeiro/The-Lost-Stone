@@ -28,6 +28,7 @@ public class MainCharMove : MonoBehaviour {
     //Golpes pesados -> 1 coraçao de dano 
     //Golpes leves -> meio coraçao de dano
     public int halfLife;
+	public bool playerIsAlive = true;
 
     // Variáveis utilizadas nos audios
     public float vol;
@@ -62,53 +63,55 @@ public class MainCharMove : MonoBehaviour {
 			MainCharDead ();
 		}
 
-		// Mudança da direção que o MainChar está olhando
-		if((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && !direction){
-			Flip ();
+		if(playerIsAlive){
+			// Mudança da direção que o MainChar está olhando
+			if((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && !direction){
+				Flip ();
+			}
+			else if((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && direction){
+				Flip ();
+			}
+
+       		 /* Movimentação do MainChar para a direita, esquerda e pulo de acordo com a tecla que o
+			 * usuário está apertando. 
+			 */
+        	if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))){
+          	  AnimController.SetBool("isWalking", true);
+           	 transform.Translate(new Vector2(speed * Time.deltaTime, 0));
+       		 }
+
+        	else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))){
+           	 	AnimController.SetBool("isWalking", true);
+            	transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
+        	}
+
+        	else{
+            	AnimController.SetBool("isWalking", false);
+        	}
+
+        	if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && jump == true){
+            	mainCharRigidbody.AddForce(new Vector2(0, force), ForceMode2D.Impulse);
+            	AnimController.SetBool("isJumping", true);
+            	AnimController.SetBool("inGround", false);
+       	 	}
+
+        	// Controle do tempo entre um tiro e outro
+        	if (shotCoolDown > 0)
+				shotCoolDown -= Time.deltaTime;
+
+			// Libera um tiro (GameObject Shot) quando o usuário clica nas teclas M ou J
+			if(Input.GetKey(KeyCode.Space)){
+            	AnimController.SetBool("isFiring", true);
+				Fire ();
+				shotCoolDown = shotingRate;
+
+            	// Toca o audio audFire
+            	AudController.PlayOneShot(audFire, vol);
+			}
+       		else{
+            	AnimController.SetBool("isFiring", false);
+        	}
 		}
-		else if((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && direction){
-			Flip ();
-		}
-
-        /* Movimentação do MainChar para a direita, esquerda e pulo de acordo com a tecla que o
-		 * usuário está apertando. 
-		 */
-        if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))){
-            AnimController.SetBool("isWalking", true);
-            transform.Translate(new Vector2(speed * Time.deltaTime, 0));
-        }
-
-        else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))){
-            AnimController.SetBool("isWalking", true);
-            transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
-        }
-
-        else{
-            AnimController.SetBool("isWalking", false);
-        }
-
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && jump == true){
-            mainCharRigidbody.AddForce(new Vector2(0, force), ForceMode2D.Impulse);
-            AnimController.SetBool("isJumping", true);
-            AnimController.SetBool("inGround", false);
-        }
-
-        // Controle do tempo entre um tiro e outro
-        if (shotCoolDown > 0)
-			shotCoolDown -= Time.deltaTime;
-
-		// Libera um tiro (GameObject Shot) quando o usuário clica nas teclas M ou J
-		if(Input.GetKey(KeyCode.Space)){
-            AnimController.SetBool("isFiring", true);
-			Fire ();
-			shotCoolDown = shotingRate;
-
-            // Toca o audio audFire
-            AudController.PlayOneShot(audFire, vol);
-		}
-        else{
-            AnimController.SetBool("isFiring", false);
-        }
 			
 	}
 
@@ -209,6 +212,6 @@ public class MainCharMove : MonoBehaviour {
 
 	// Método que controla a morte do MainChar
 	void MainCharDead(){
-		
+		playerIsAlive = false;
 	}
 }
