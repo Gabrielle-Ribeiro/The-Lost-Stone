@@ -10,6 +10,7 @@ public class BackgroundItemMov : MonoBehaviour {
 
 	void Start () {
 		itemRigidbody = GetComponent<Rigidbody2D> ();
+		// Controle da movimentação do gameObject para a esquerda
 		itemRigidbody.velocity = speed * this.transform.localScale.x;
 	
 	}
@@ -20,6 +21,7 @@ public class BackgroundItemMov : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll){
+		// O gameObject é destruído quando chega no limite do cenário
 		if(coll.gameObject.CompareTag("LimitLeft")){
 			Destroy (this.gameObject);
 		}
