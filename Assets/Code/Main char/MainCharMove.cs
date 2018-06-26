@@ -9,6 +9,7 @@ public class MainCharMove : MonoBehaviour {
 	//Variávies da Interface de usuário 
 	public int pontuation = 0;
     public Text points;
+	public Image hearth;
  
 	// Variáveis usadas na alteração da direção que o MainChar está olhando
 	public bool direction = true;
@@ -32,7 +33,8 @@ public class MainCharMove : MonoBehaviour {
     //1 halfLife -> meio coração
     //Golpes pesados -> 1 coraçao de dano 
     //Golpes leves -> meio coraçao de dano
-    public int halfLife;
+	public int life = 10;
+    public float halfLife;
 	public bool playerIsAlive = true;
 
     // Variáveis utilizadas nos audios
@@ -65,7 +67,7 @@ public class MainCharMove : MonoBehaviour {
 	void Update () {
 		
 		// Se o valor da variável halfLife chegar a 0 o MainChar morre
-		if(halfLife <= 0){
+		if(life <= 0){
 			MainCharDead ();
 		}
 
@@ -136,7 +138,12 @@ public class MainCharMove : MonoBehaviour {
             AnimController.SetBool("inGround", true);
             AnimController.SetBool("isJumping", false);
 			jump = true;
-		}  
+		}
+
+		if (col.gameObject.CompareTag("Enemy")){
+			hearth.fillAmount -= 0.10f; //decremento do fill amount para a renderização do coração 
+			life -= 1;
+		}
 
         // Recebe dano caso colida com algum inimigo
         // TODO: ser arremessado ao tomar dano
@@ -188,7 +195,8 @@ public class MainCharMove : MonoBehaviour {
         // Se o MainChar cair em um "buraco" ele perde todas as suas vidas
         if (coll.gameObject.CompareTag("Hole"))
         {
-            halfLife = 0;
+            life = 0;
+			hearth.fillAmount = 0;
             //SceneManager.LoadLevel("GameOver");
         }
 		// Se o player colidir com um item ele ganha 10 pontos
@@ -197,6 +205,11 @@ public class MainCharMove : MonoBehaviour {
 			pontuation = pontuation + 10;
 			points.text = pontuation.ToString();
         }
+		// Se o player colidir com um vida ele ganha uma vida
+		if (coll.gameObject.CompareTag("Life") && life < 10)
+		{
+			hearth.fillAmount += 0.20f;
+		}
     }
 
     //Método que retira vida do personagem conforme o dano aplicado
