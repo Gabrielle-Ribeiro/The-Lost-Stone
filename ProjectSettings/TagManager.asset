@@ -18,6 +18,7 @@ TagManager:
   - BossLimit
   - BossCreation
   - EnemyArea
+  - PontuationItem
   layers:
   - Default
   - TransparentFX
