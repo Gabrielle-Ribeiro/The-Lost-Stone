@@ -10,6 +10,8 @@ public class MainCharMove : MonoBehaviour {
 	public int pontuationText;
 	public int pontuation;
 	public bool entra = false;
+
+    public Text points;
  
 	// Variáveis usadas na alteração da direção que o MainChar está olhando
 	public bool direction = true;
@@ -204,6 +206,8 @@ public class MainCharMove : MonoBehaviour {
             //pontuationText.text = pontuation.ToString();
             pontuationText += pontuation;
             pontuation += 10;
+
+            points.text = pontuationText.ToString();
         }
     }
 
