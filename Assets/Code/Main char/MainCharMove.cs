@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class MainCharMove : MonoBehaviour {
 
@@ -39,12 +38,19 @@ public class MainCharMove : MonoBehaviour {
     public AudioClip audFire;
     AudioSource AudController;
 
+    Scene faseAtual;
+
     void Start () {
 
-		/* Indica que com a variável mainCharTransform será possível manipular os valores das 
+        faseAtual = SceneManager.GetActiveScene();
+
+        PlayerPrefs.GetInt("Pontuacao", pontuation);
+        PlayerPrefs.GetInt("Life", life);
+
+        /* Indica que com a variável mainCharTransform será possível manipular os valores das 
 		 * propriedades do componente Transform do objeto MainChar
 		 */
-		mainCharTransform = GetComponent<Transform> ();
+        mainCharTransform = GetComponent<Transform> ();
 
 		/* Indica que com a variável mainCharRigidbody será possível manipular os valores das 
 		 * propriedades do componente Rigidbody 2D do objeto MainChar
@@ -112,6 +118,8 @@ public class MainCharMove : MonoBehaviour {
        		else
             	AnimController.SetBool("isFiring", false);
 		}
+
+        PlayerPrefs.SetInt("Pontuacao", pontuation);
 			
 	}
 
@@ -183,6 +191,7 @@ public class MainCharMove : MonoBehaviour {
 		if (coll.gameObject.CompareTag("Life") && life < 10)
 		{
 			hearth.fillAmount += 0.20f;
+            PlayerPrefs.SetInt("Life", life);
 		}
     }
 		
@@ -200,7 +209,8 @@ public class MainCharMove : MonoBehaviour {
 	void MainCharDead(){
 		playerIsAlive = false;
 		SceneManager.LoadScene ("GameOver", LoadSceneMode.Additive);
-	}
+        SceneManager.UnloadSceneAsync(faseAtual);
+    }
 		
 
 }
