@@ -2190,7 +2190,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 340675678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 443.5, y: 163, z: 10}
+  m_LocalPosition: {x: 489.5, y: 177, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 428143060}
@@ -5500,7 +5500,33 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3f5bd6c833fe58e479d247c485f1f223, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 114676302598396384, guid: 9668f8066cc537142bdec9d81015cb19,
+        type: 2}
+      propertyPath: AnimController
+      value: 
+      objectReference: {fileID: 926334991}
+    - target: {fileID: 114676302598396384, guid: 9668f8066cc537142bdec9d81015cb19,
+        type: 2}
+      propertyPath: pontuation
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 70180317888346362, guid: 9668f8066cc537142bdec9d81015cb19,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 70180317888346362, guid: 9668f8066cc537142bdec9d81015cb19,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 70735330986684182, guid: 9668f8066cc537142bdec9d81015cb19,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 70180317888346362, guid: 9668f8066cc537142bdec9d81015cb19, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9668f8066cc537142bdec9d81015cb19, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &922302314
@@ -5549,6 +5575,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 562a20b9b84e71e419827dd6bf84c772, type: 2}
   m_IsPrefabParent: 0
+--- !u!95 &926334991 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95814139026882248, guid: 9668f8066cc537142bdec9d81015cb19,
+    type: 2}
+  m_PrefabInternal: {fileID: 901105157}
 --- !u!1001 &928562625
 Prefab:
   m_ObjectHideFlags: 0

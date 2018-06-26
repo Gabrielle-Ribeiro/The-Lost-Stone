@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class MainCharMove : MonoBehaviour {
 
 	//Variávies da Interface de usuário 
-	public Text pontuationText;
-	public int pontuation = 100;
+	public int pontuationText;
+	public int pontuation;
 	public bool entra = false;
  
 	// Variáveis usadas na alteração da direção que o MainChar está olhando
@@ -27,7 +27,7 @@ public class MainCharMove : MonoBehaviour {
 	public GameObject shot;             // GameObject da bala 
 
     //Variável que determina a animação do MainChar
-    Animator AnimController;
+    public Animator AnimController;
 
     //Variável para vida do personagem
     //1 halfLife -> meio coração
@@ -42,8 +42,9 @@ public class MainCharMove : MonoBehaviour {
     AudioSource AudController;
 
     void Start () {
-		/*Set para o texto inicial do painel de pontuação*/
-		pontuationText.text = "ASDF";//pontuation.ToString();
+        /*Set para o texto inicial do painel de pontuação*/
+        //pontuationText.text = "ASDF";//pontuation.ToString();
+        pontuationText = 0;
 
 		/* Indica que com a variável mainCharTransform será possível manipular os valores das 
 		 * propriedades do componente Transform do objeto MainChar
@@ -88,20 +89,19 @@ public class MainCharMove : MonoBehaviour {
 			 * usuário está apertando. 
 			 */
         	if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))){
-				pontuationText.text = "RIGHT";
+				//pontuationText.text = "RIGHT";
           	  AnimController.SetBool("isWalking", true);
            	 transform.Translate(new Vector2(speed * Time.deltaTime, 0));
        		 }
 
         	else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))){
-				pontuationText.text = "LEFT";
+				//pontuationText.text = "LEFT";
            	 	AnimController.SetBool("isWalking", true);
             	transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
         	}
 
-        	else{
+        	else
             	AnimController.SetBool("isWalking", false);
-        	}
 
         	if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && jump == true){
             	mainCharRigidbody.AddForce(new Vector2(0, force), ForceMode2D.Impulse);
@@ -113,7 +113,7 @@ public class MainCharMove : MonoBehaviour {
         	if (shotCoolDown > 0)
 				shotCoolDown -= Time.deltaTime;
 
-			// Libera um tiro (GameObject Shot) quando o usuário clica nas teclas M ou J
+			// Libera um tiro (GameObject Shot) quando o usuário clica na tecla Space
 			if(Input.GetKey(KeyCode.Space)){
             	AnimController.SetBool("isFiring", true);
 				Fire ();
@@ -122,9 +122,8 @@ public class MainCharMove : MonoBehaviour {
             	// Toca o audio audFire
             	AudController.PlayOneShot(audFire, vol);
 			}
-       		else{
+       		else
             	AnimController.SetBool("isFiring", false);
-        	}
 		}
 			
 	}
@@ -190,18 +189,22 @@ public class MainCharMove : MonoBehaviour {
 			jump = false;
 		}
 	}
-		
-	void OntriggerEnter2D(Collider2D coll){
-		// Se o MainChar cair em um "buraco" ele perde todas as suas vidas
-		if(coll.gameObject.CompareTag("Hole")){
-			halfLife = 0;
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        // Se o MainChar cair em um "buraco" ele perde todas as suas vidas
+        if (coll.gameObject.CompareTag("Hole"))
+        {
+            halfLife = 0;
             //SceneManager.LoadLevel("GameOver");
         }
-		if(coll.gameObject.CompareTag("PontuationItem")){
-			entra = true;
-			pontuation = pontuation + 10;
-			pontuationText.text = pontuation.ToString();
-		}
+        if (coll.gameObject.CompareTag("PontuationItem"))
+        {
+            entra = true;
+            //pontuationText.text = pontuation.ToString();
+            pontuationText += pontuation;
+            pontuation += 10;
+        }
     }
 
     //Método que retira vida do personagem conforme o dano aplicado
