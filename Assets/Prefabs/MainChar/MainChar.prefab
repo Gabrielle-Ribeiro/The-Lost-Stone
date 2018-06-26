@@ -152,10 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7afb590d80fde543b858e7d080d1fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pontuationText: 0
   pontuation: 0
-  entra: 0
   points: {fileID: 0}
+  hearth: {fileID: 0}
   direction: 1
   mainCharTransform: {fileID: 4612870169942194}
   speed: 5
@@ -167,7 +166,7 @@ MonoBehaviour:
   barrel: {fileID: 4568059049974888}
   shot: {fileID: 1333899163680606, guid: 2cf80f4487eb8414aba494b18fe29bc5, type: 2}
   AnimController: {fileID: 0}
-  halfLife: 6
+  life: 10
   playerIsAlive: 1
   vol: 0
   audFire: {fileID: 0}

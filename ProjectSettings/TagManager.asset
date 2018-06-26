@@ -12,13 +12,12 @@ TagManager:
   - Shot
   - AncientTree
   - Hole
-  - SandMonster
-  - SandMonsterMinor
-  - SandMonsterThrown
   - BossLimit
   - BossCreation
   - EnemyArea
   - PontuationItem
+  - Enemy
+  - Life
   layers:
   - Default
   - TransparentFX

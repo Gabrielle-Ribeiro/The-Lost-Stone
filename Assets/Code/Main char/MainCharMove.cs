@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainCharMove : MonoBehaviour {
 
@@ -26,15 +27,11 @@ public class MainCharMove : MonoBehaviour {
 	public Transform barrel;            // GameObject Empty que cria a bala
 	public GameObject shot;             // GameObject da bala 
 
-    //Variável que determina a animação do MainChar
+    // Variável que determina a animação do MainChar
     public Animator AnimController;
 
-    //Variável para vida do personagem
-    //1 halfLife -> meio coração
-    //Golpes pesados -> 1 coraçao de dano 
-    //Golpes leves -> meio coraçao de dano
+    // Variáveis para o controle de vida do personagem
 	public int life = 10;
-    public float halfLife;
 	public bool playerIsAlive = true;
 
     // Variáveis utilizadas nos audios
@@ -66,11 +63,6 @@ public class MainCharMove : MonoBehaviour {
 
 	void Update () {
 		
-		// Se o valor da variável halfLife chegar a 0 o MainChar morre
-		if(life <= 0){
-			MainCharDead ();
-		}
-
 		if(playerIsAlive){
 			// Mudança da direção que o MainChar está olhando
 			if((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && !direction){
@@ -143,29 +135,10 @@ public class MainCharMove : MonoBehaviour {
 		if (col.gameObject.CompareTag("Enemy")){
 			hearth.fillAmount -= 0.10f; //decremento do fill amount para a renderização do coração 
 			life -= 1;
+			if(life == 0){
+				MainCharDead ();
+			}
 		}
-
-        // Recebe dano caso colida com algum inimigo
-        // TODO: ser arremessado ao tomar dano
-        if (col.gameObject.CompareTag("AncientTree"))
-            TakenDamage(3);
-
-        else if (col.gameObject.CompareTag("SandMonsterMinor") || col.gameObject.CompareTag("SandMonsterThrown"))
-            TakenDamage(1);
-
-        else if (col.gameObject.CompareTag("SandMonster"))
-            TakenDamage(2);
-
-        // if (halfLife > 0)
-        //AnimController.SetBool("isTakingDamage", true);
-
-        //else
-        //AnimController.SetBool("isDying", true);
-
-        //if (halfLife < 1)
-            //GameOver
-
-
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -197,6 +170,7 @@ public class MainCharMove : MonoBehaviour {
         {
             life = 0;
 			hearth.fillAmount = 0;
+			MainCharDead ();
             //SceneManager.LoadLevel("GameOver");
         }
 		// Se o player colidir com um item ele ganha 10 pontos
@@ -211,22 +185,7 @@ public class MainCharMove : MonoBehaviour {
 			hearth.fillAmount += 0.20f;
 		}
     }
-
-    //Método que retira vida do personagem conforme o dano aplicado
-    void TakenDamage(int damage)
-    {
-        halfLife -= damage;
-
-        //if (halfLife > 0) ;
-            //AnimController.SetBool("isTakingDamage", true);
-
-       // else
-        //{
-            //AnimController.SetBool("isDying", true);
-            //GameOver
-        //}
-    }
-
+		
 	// Método de criação do GameObject Shot
 	void Fire(){
 		if(shotCoolDown <= 0f){
@@ -240,6 +199,7 @@ public class MainCharMove : MonoBehaviour {
 	// Método que controla a morte do MainChar
 	void MainCharDead(){
 		playerIsAlive = false;
+		SceneManager.LoadScene ("GameOver", LoadSceneMode.Additive);
 	}
 		
 
