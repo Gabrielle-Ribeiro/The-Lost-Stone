@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1434781914979852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.4, y: -1.2117721, z: 0}
+  m_LocalPosition: {x: -9.98, y: -2.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4568059049974888}
@@ -121,8 +121,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1019125, y: 0.09571886}
-  m_Size: {x: 0.9821129, y: 2.4977121}
+  m_Offset: {x: 0.09977245, y: 0.17971969}
+  m_Size: {x: 1.2446518, y: 2.6213932}
   m_Direction: 0
 --- !u!95 &95814139026882248
 Animator:
@@ -152,9 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7afb590d80fde543b858e7d080d1fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pontuationText: {fileID: 0}
+  pontuationText: 0
   pontuation: 0
   entra: 0
+  points: {fileID: 0}
   direction: 1
   mainCharTransform: {fileID: 4612870169942194}
   speed: 5
@@ -165,6 +166,7 @@ MonoBehaviour:
   shotCoolDown: 0
   barrel: {fileID: 4568059049974888}
   shot: {fileID: 1333899163680606, guid: 2cf80f4487eb8414aba494b18fe29bc5, type: 2}
+  AnimController: {fileID: 0}
   halfLife: 6
   playerIsAlive: 1
   vol: 0

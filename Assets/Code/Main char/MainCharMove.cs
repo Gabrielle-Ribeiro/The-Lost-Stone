@@ -7,10 +7,7 @@ using UnityEngine.UI;
 public class MainCharMove : MonoBehaviour {
 
 	//Variávies da Interface de usuário 
-	public int pontuationText;
-	public int pontuation;
-	public bool entra = false;
-
+	public int pontuation = 0;
     public Text points;
  
 	// Variáveis usadas na alteração da direção que o MainChar está olhando
@@ -44,9 +41,6 @@ public class MainCharMove : MonoBehaviour {
     AudioSource AudController;
 
     void Start () {
-        /*Set para o texto inicial do painel de pontuação*/
-        //pontuationText.text = "ASDF";//pontuation.ToString();
-        pontuationText = 0;
 
 		/* Indica que com a variável mainCharTransform será possível manipular os valores das 
 		 * propriedades do componente Transform do objeto MainChar
@@ -69,9 +63,6 @@ public class MainCharMove : MonoBehaviour {
     }
 
 	void Update () {
-
-		//Update de canvas
-
 		
 		// Se o valor da variável halfLife chegar a 0 o MainChar morre
 		if(halfLife <= 0){
@@ -200,14 +191,11 @@ public class MainCharMove : MonoBehaviour {
             halfLife = 0;
             //SceneManager.LoadLevel("GameOver");
         }
+		// Se o player colidir com um item ele ganha 10 pontos
         if (coll.gameObject.CompareTag("PontuationItem"))
         {
-            entra = true;
-            //pontuationText.text = pontuation.ToString();
-            pontuationText += pontuation;
-            pontuation += 10;
-
-            points.text = pontuationText.ToString();
+			pontuation = pontuation + 10;
+			points.text = pontuation.ToString();
         }
     }
 
