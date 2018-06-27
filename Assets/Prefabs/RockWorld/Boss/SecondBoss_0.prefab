@@ -173,6 +173,8 @@ MonoBehaviour:
   canWalk: 1
   bossIsAlive: 1
   bossLife: 10
+  attackBoss2: {fileID: 8300000, guid: 7a36f3dd55fa646d1bf44ca02fc73842, type: 3}
+  soundBoss2: {fileID: 8300000, guid: a209a4bec80323e438993a87679a6e60, type: 3}
 --- !u!212 &212095379566053190
 SpriteRenderer:
   m_ObjectHideFlags: 1

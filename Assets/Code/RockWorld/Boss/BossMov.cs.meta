@@ -5,7 +5,12 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bossRigidbody: {instanceID: 0}
+  - secondBossCreation: {instanceID: 0}
+  - secondBoss: {instanceID: 0}
+  - soundBoss1: {fileID: 8300000, guid: 54a42caaf18cfe44c81b4ec1482075be, type: 3}
+  - soundBoss2: {fileID: 8300000, guid: c373c265c2b2e7d4190fb6d5a4f27756, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

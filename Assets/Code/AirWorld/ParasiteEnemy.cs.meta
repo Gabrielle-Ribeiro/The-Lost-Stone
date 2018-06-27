@@ -5,7 +5,11 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemyRigidbody: {instanceID: 0}
+  - enemyTransform: {instanceID: 0}
+  - soundparasite: {fileID: 8300000, guid: 1a62074e995c1114db71c6e84e4199de, type: 3}
+  - moveparasite: {fileID: 8300000, guid: 1a62074e995c1114db71c6e84e4199de, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

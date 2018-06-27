@@ -18,6 +18,9 @@ public class BossMov : MonoBehaviour {
 	//Variável de criação do segundo Boss
 	public Transform secondBossCreation;
 	public GameObject secondBoss;
+    //Variável do audio
+    public AudioClip soundBoss1;
+    public AudioClip soundBoss2;
 
     Animator AnimController;
 
@@ -36,7 +39,8 @@ public class BossMov : MonoBehaviour {
 		}
 		// Se o Boss estiver vivo e longe do personagem, ele se movimenta para a esquerda e direita
 		if(bossIsAlive && canWalk){
-		    bossRigidbody.velocity = new Vector2 (speed * direction, bossRigidbody.velocity.y);
+           
+            bossRigidbody.velocity = new Vector2 (speed * direction, bossRigidbody.velocity.y);
 		}
 	}
 
@@ -44,12 +48,14 @@ public class BossMov : MonoBehaviour {
 		// Quando o Boss sai do espaço delimitado de sua movimentação a sua direção é alterada
 		if(collision.CompareTag("BossLimit") && bossIsAlive){
 			direction = -direction;
-		}
+            SoundManager.instance.RandomizeSfx(soundBoss1, soundBoss2);
+        }
 	}
 
 	void OnCollisionEnter2D(Collision2D collision){
 		// Quando um tiro atinge o Boss, ele recebe 0.5 de dano
 		if(collision.gameObject.CompareTag("Shot")){
+        
 			bossLife -= 0.5f;
 		}
 	}
@@ -71,7 +77,8 @@ public class BossMov : MonoBehaviour {
 	 * primeira forma é morto
 	 */
 	void SecondBossCreation(){
-		var cloneSecondBoss = Instantiate(secondBoss, secondBossCreation.position, Quaternion.identity) as GameObject;
+       
+        var cloneSecondBoss = Instantiate(secondBoss, secondBossCreation.position, Quaternion.identity) as GameObject;
 	}
 
     // Impede que o boss comece sua rotina antes de spawnar

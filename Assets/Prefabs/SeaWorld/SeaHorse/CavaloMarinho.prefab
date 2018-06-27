@@ -175,6 +175,8 @@ MonoBehaviour:
   seaHorseTransform: {fileID: 4341574637375580}
   enemyIsAlive: 1
   enemyLife: 20
+  soundHorse: {fileID: 8300000, guid: 88544a1b7f77f7441858a38e033351f6, type: 3}
+  attackHorse: {fileID: 8300000, guid: c3e257fb65a2bea42a3c53d9b09d7d30, type: 3}
 --- !u!212 &212877190752595202
 SpriteRenderer:
   m_ObjectHideFlags: 1

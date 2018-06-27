@@ -151,6 +151,8 @@ MonoBehaviour:
   LookingAtRight: 0
   life: 10
   playerDamage: 1
+  attackSound1: {fileID: 8300000, guid: 15212165e88f8bd448704fd74bfd1e80, type: 3}
+  soundtree: {fileID: 8300000, guid: 40bf484730290b749a1c3668625b53ef, type: 3}
 --- !u!212 &212419559699076056
 SpriteRenderer:
   m_ObjectHideFlags: 1

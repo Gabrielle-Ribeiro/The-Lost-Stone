@@ -5,7 +5,13 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Target: {instanceID: 0}
+  - AcidRanged: {instanceID: 0}
+  - AcidPool: {instanceID: 0}
+  - AcidSpawn: {instanceID: 0}
+  - PoolSpawn: {instanceID: 0}
+  - attackboss: {fileID: 8300000, guid: b308e7c3c46a4481193a230a3668bee3, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -271,6 +271,8 @@ MonoBehaviour:
   enemyTransform: {fileID: 4585220548076782}
   target: {fileID: 0}
   birdHouse: {fileID: 0}
+  birdsound: {fileID: 8300000, guid: b5a7c4b7f3f26b64db32dbb52e95b680, type: 3}
+  attackbird: {fileID: 8300000, guid: 39d592abb1ae943778436337fe27c5d6, type: 3}
   enemyIsAlive: 1
   enemyLife: 7
 --- !u!212 &212310939998616460

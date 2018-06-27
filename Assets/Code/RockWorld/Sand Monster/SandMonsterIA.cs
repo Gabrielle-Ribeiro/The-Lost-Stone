@@ -23,7 +23,9 @@ public class SandMonsterIA : MonoBehaviour {
     public Transform sandMonsterThrown; // Prefab do Attack (Thrown)
     public Transform sandMonsterMinor;  // Prefab do SandMonsterMinor
     public Transform bulletSpawn;       // Local a ser criado o ataque
-    
+    //Variáveis do audio
+    public AudioClip soundMonster1;
+    public AudioClip soundattack;
 	void Start () {
         // Definindo os componentes do npc
         // Permite:
@@ -45,19 +47,24 @@ public class SandMonsterIA : MonoBehaviour {
 	
 	void Update () {
         // Reduz o cooldown caso esteja acordado
-        if (AttackCooldown > 0 && !isWaiting)
-            AttackCooldown -= Time.deltaTime;
+        if (AttackCooldown > 0 && !isWaiting)    
+        AttackCooldown -= Time.deltaTime;
+        
 
         // Ataca o jogador 
+
         if (!isDead && !lostPlayer)
-            AttackRanged();
-	}
+        AttackRanged();
+     
+
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Shot"))
         {
             life -= playerDamage;
+            SoundManager.instance.PlaySingle(soundattack);
 
             // Se transforma em um Sand Monster Minor caso tenha pouca vida
             if (life < 2)
@@ -67,31 +74,37 @@ public class SandMonsterIA : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+     
         if (collision.gameObject.CompareTag("Player"))
             Appears (true);
+        
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
             Appears (false);
+       
     }
 
 
     void AttackRanged()
     {
+     
         // Reduz o tempo restante para o proximo ataque se o mesmo for > 0
         if (AttackCooldown > 0)
             AttackCooldown -= Time.deltaTime;
-
+       
         // Atira :D
         else if (isUpperGround)
-        {
+        { 
             AttackCooldown = AttackCooldownDefault;     // Reinicia o cooldown 
-
             var shotTransform = Instantiate(sandMonsterThrown) as Transform;    // Instancia um golpe
-            shotTransform.position = bulletSpawn.position;                        // Define a posição do golpe como a posição atual deste npc
+            shotTransform.position = bulletSpawn.position;       // Define a posição do golpe como a posição atual deste npc
+
+
         }
+        
     }
 
     // Função que torna o npc em um Minor
@@ -107,8 +120,10 @@ public class SandMonsterIA : MonoBehaviour {
     {
         if (show)
         {
+            SoundManager.instance.PlaySingle(soundMonster1);
             lostPlayer = false;
             isWaiting = false;
+          
         }
 
         else

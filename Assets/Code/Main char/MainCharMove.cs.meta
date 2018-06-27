@@ -5,7 +5,21 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mainCharTransform: {instanceID: 0}
+  - mainCharRigidbody: {instanceID: 0}
+  - barrel: {instanceID: 0}
+  - shot: {instanceID: 0}
+  - AnimController: {instanceID: 0}
+  - audFire: {instanceID: 0}
+  - moveSound1: {fileID: 8300000, guid: 71b503058c7b57c49bec6cb2e5ed2d72, type: 3}
+  - moveSound2: {fileID: 8300000, guid: 27c6f7887c7606144b6b10a639fc620e, type: 3}
+  - moveSound3: {fileID: 8300000, guid: 327950173197e0f4e99272658c31b61a, type: 3}
+  - moveSound4: {fileID: 8300000, guid: ee58f1d233faf415f8e5bc31467aab7c, type: 3}
+  - moveSound5: {instanceID: 0}
+  - moveSound6: {instanceID: 0}
+  - moveSound7: {fileID: 8300000, guid: 766b5064c5543da4a9940ec0d7d7d253, type: 3}
+  - moveSound8: {fileID: 8300000, guid: 766b5064c5543da4a9940ec0d7d7d253, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ThrownIA : MonoBehaviour {
     public float speed;                 // Velocidade do arremessável no eixo X
-
+   
     Rigidbody2D rgbd_Thrown;            // Permite controlar a velocidade do arremessável
     Rigidbody2D rgbd_Player;            // Permite identificar a posição do jogador
 
@@ -19,6 +19,8 @@ public class ThrownIA : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collider)
     {
         if(collider.gameObject.name != "SandMonster")
+            
         DestroyObject(gameObject);
+       
     }
 }

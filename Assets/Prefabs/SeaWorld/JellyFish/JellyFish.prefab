@@ -125,6 +125,7 @@ MonoBehaviour:
   speed: 1.5
   jellyFishRigidbody: {fileID: 50814466724140934}
   jellyFishTransform: {fileID: 4275641614847526}
+  soundfish: {fileID: 8300000, guid: 161471bfc6b976d418f5200db2c8a599, type: 3}
 --- !u!212 &212339452153558840
 SpriteRenderer:
   m_ObjectHideFlags: 1

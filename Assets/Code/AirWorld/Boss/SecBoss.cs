@@ -17,7 +17,9 @@ public class SecBoss : MonoBehaviour {
     public int life;
     public int playerDamage;
     public int AmoDam;
-
+    public AudioClip soundBoss1;
+    public AudioClip soundBoss2;
+    public AudioClip attackBoss;
     Transform secBoss;
     Transform target;
     Transform beak;
@@ -79,6 +81,7 @@ public class SecBoss : MonoBehaviour {
         {
             AttackCooldown = AttackRate;
             canAttack = true;
+            SoundManager.instance.PlaySingle(attackBoss);
         }
     }
     void OnCollisionEnter2D(Collision2D col)
@@ -88,6 +91,7 @@ public class SecBoss : MonoBehaviour {
             // dano personagem
             canAttack = false;
             BacktoHome();
+            SoundManager.instance.RandomizeSfx(soundBoss1, soundBoss2);
         }
         if (col.gameObject.CompareTag("Ground"))
         {

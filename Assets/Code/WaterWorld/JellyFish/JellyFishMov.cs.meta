@@ -5,7 +5,11 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - jellyFishRigidbody: {instanceID: 0}
+  - jellyFishTransform: {instanceID: 0}
+  - fishatack: {fileID: 8300000, guid: 7a36f3dd55fa646d1bf44ca02fc73842, type: 3}
+  - soundfish: {fileID: 8300000, guid: 161471bfc6b976d418f5200db2c8a599, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

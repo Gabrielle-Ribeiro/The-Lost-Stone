@@ -5,7 +5,12 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - sandMonsterThrown: {instanceID: 0}
+  - sandMonsterMinor: {instanceID: 0}
+  - bulletSpawn: {instanceID: 0}
+  - soundMonster1: {fileID: 8300000, guid: 54a42caaf18cfe44c81b4ec1482075be, type: 3}
+  - soundattack: {fileID: 8300000, guid: f19215d2bd0134f37bfa0884c64969db, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

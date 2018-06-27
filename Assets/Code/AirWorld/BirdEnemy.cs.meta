@@ -5,7 +5,13 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemyRigidbody: {instanceID: 0}
+  - enemyTransform: {instanceID: 0}
+  - target: {instanceID: 0}
+  - birdHouse: {instanceID: 0}
+  - birdsound: {fileID: 8300000, guid: b5a7c4b7f3f26b64db32dbb52e95b680, type: 3}
+  - attackbird: {fileID: 8300000, guid: 39d592abb1ae943778436337fe27c5d6, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

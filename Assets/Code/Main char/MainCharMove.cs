@@ -3,48 +3,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainCharMove : MonoBehaviour {
- 
-	// Variáveis usadas na alteração da direção que o MainChar está olhando
-	public bool direction = true;
-	public Transform mainCharTransform;
+public class MainCharMove : MonoBehaviour
+{
 
-	// Variáveis usadas na movimentação do personagem
-	public float speed = 0.5f, force = 5.0f;
-	public Rigidbody2D mainCharRigidbody;
-	public bool jump = false;
+    // Variáveis usadas na alteração da direção que o MainChar está olhando
+    public bool direction = true;
+    public Transform mainCharTransform;
 
-	// Variáveis usadas na criação do tiro do MainChar
-	public float shotingRate = 0.1f;    // Tempo entre um tiro e outro
-	public float shotCoolDown = 0f;
-	public Transform barrel;            // GameObject Empty que cria a bala
-	public GameObject shot;             // GameObject da bala 
+    // Variáveis usadas na movimentação do personagem
+    public float speed = 0.5f, force = 5.0f;
+    public Rigidbody2D mainCharRigidbody;
+    public bool jump = false;
 
-    //Variável que determina a animação do MainChar
-    Animator AnimController;
+    // Variáveis usadas na criação do tiro do MainChar
+    public float shotingRate = 0.1f; // Tempo entre um tiro e outro
+    public float shotCoolDown = 0f;
+    public Transform barrel; // GameObject Empty que cria a bala
+    public GameObject shot; // GameObject da bala 
+
+    //Variável que determina o estado do MainChar
+    public Animator AnimController;
 
     //Variável para vida do personagem
     //1 halfLife -> meio coração
     //Golpes pesados -> 1 coraçao de dano 
     //Golpes leves -> meio coraçao de dano
     public int halfLife;
-	public bool playerIsAlive = true;
-
+    public bool playerIsAlive = true;
     // Variáveis utilizadas nos audios
     public float vol;
     public AudioClip audFire;
     AudioSource AudController;
+    public AudioClip moveSound1;
+    public AudioClip moveSound2;
+    public AudioClip moveSound3;
+    public AudioClip moveSound4;
+    public AudioClip moveSound7;
+    public AudioClip moveSound8;
 
-    void Start () {
-		/* Indica que com a variável mainCharTransform será possível manipular os valores das 
+    void Start()
+    {
+        /* Indica que com a variável mainCharTransform será possível manipular os valores das 
 		 * propriedades do componente Transform do objeto MainChar
 		 */
-		mainCharTransform = GetComponent<Transform> ();
+        mainCharTransform = GetComponent<Transform>();
 
-		/* Indica que com a variável mainCharRigidbody será possível manipular os valores das 
+        /* Indica que com a variável mainCharRigidbody será possível manipular os valores das 
 		 * propriedades do componente Rigidbody 2D do objeto MainChar
 		 */
-		mainCharRigidbody = GetComponent<Rigidbody2D> ();
+        mainCharRigidbody = GetComponent<Rigidbody2D>();
 
         // Atribui o componente AudioSource a AudController
         AudController = GetComponent<AudioSource>();
@@ -55,8 +62,7 @@ public class MainCharMove : MonoBehaviour {
         AnimController.SetBool("isJumping", true);
         AnimController.SetBool("isFiring", false);
     }
-
-	void Update () {
+    void Update () {
 		
 		// Se o valor da variável halfLife chegar a 0 o MainChar morre
 		if(halfLife <= 0){
@@ -76,12 +82,14 @@ public class MainCharMove : MonoBehaviour {
 			 * usuário está apertando. 
 			 */
         	if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))){
-          	  AnimController.SetBool("isWalking", true);
+                SoundManager.instance.RandomizeSfx(moveSound1, moveSound2);
+                AnimController.SetBool("isWalking", true);
            	 transform.Translate(new Vector2(speed * Time.deltaTime, 0));
        		 }
 
         	else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))){
-           	 	AnimController.SetBool("isWalking", true);
+                SoundManager.instance.RandomizeSfx(moveSound2, moveSound1);
+                AnimController.SetBool("isWalking", true);
             	transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
         	}
 
@@ -90,7 +98,8 @@ public class MainCharMove : MonoBehaviour {
         	}
 
         	if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && jump == true){
-            	mainCharRigidbody.AddForce(new Vector2(0, force), ForceMode2D.Impulse);
+                SoundManager.instance.RandomizeSfx(moveSound3);
+                mainCharRigidbody.AddForce(new Vector2(0, force), ForceMode2D.Impulse);
             	AnimController.SetBool("isJumping", true);
             	AnimController.SetBool("inGround", false);
        	 	}
@@ -101,12 +110,13 @@ public class MainCharMove : MonoBehaviour {
 
 			// Libera um tiro (GameObject Shot) quando o usuário clica nas teclas M ou J
 			if(Input.GetKey(KeyCode.Space)){
-            	AnimController.SetBool("isFiring", true);
+                AnimController.SetBool("isFiring", true);
 				Fire ();
 				shotCoolDown = shotingRate;
 
-            	// Toca o audio audFire
-            	AudController.PlayOneShot(audFire, vol);
+                // Toca o audio audFire
+                SoundManager.instance.RandomizeSfx(moveSound4);
+                AudController.PlayOneShot(audFire, vol);
 			}
        		else{
             	AnimController.SetBool("isFiring", false);
@@ -130,17 +140,20 @@ public class MainCharMove : MonoBehaviour {
             AnimController.SetBool("inGround", true);
             AnimController.SetBool("isJumping", false);
 			jump = true;
-		}  
+		}
 
         // Recebe dano caso colida com algum inimigo
         // TODO: ser arremessado ao tomar dano
         if (col.gameObject.CompareTag("AncientTree"))
             TakenDamage(3);
+      
 
         else if (col.gameObject.CompareTag("SandMonsterMinor") || col.gameObject.CompareTag("SandMonsterThrown"))
+           
             TakenDamage(1);
 
         else if (col.gameObject.CompareTag("SandMonster"))
+           
             TakenDamage(2);
 
         // if (halfLife > 0)
@@ -180,6 +193,7 @@ public class MainCharMove : MonoBehaviour {
 	void OntriggerEnter2D(Collider2D coll){
 		// Se o MainChar cair em um "buraco" ele perde todas as suas vidas
 		if(coll.gameObject.CompareTag("Hole")){
+            SoundManager.instance.RandomizeSfx(moveSound7);
 			halfLife = 0;
             //SceneManager.LoadLevel("GameOver");
                 }
@@ -212,6 +226,7 @@ public class MainCharMove : MonoBehaviour {
 
 	// Método que controla a morte do MainChar
 	void MainCharDead(){
-		playerIsAlive = false;
+        SoundManager.instance.RandomizeSfx(moveSound8);
+        playerIsAlive = false;
 	}
 }

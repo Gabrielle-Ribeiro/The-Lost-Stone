@@ -349,6 +349,7 @@ MonoBehaviour:
   AcidPool: {fileID: 4892211999072686, guid: 51a668a8f91ecb04498a43133a805b77, type: 2}
   AcidSpawn: {fileID: 4033816395684906}
   PoolSpawn: {fileID: 4735019877455868}
+  attackboss: {fileID: 8300000, guid: b308e7c3c46a4481193a230a3668bee3, type: 3}
 --- !u!114 &114970348825851262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -368,6 +369,8 @@ MonoBehaviour:
   bossLife: 10
   secondBossCreation: {fileID: 4378107162177392}
   secondBoss: {fileID: 1034038266812480, guid: 46f9c6b9f5535f647b899079473fb4aa, type: 2}
+  soundBoss1: {fileID: 8300000, guid: 54a42caaf18cfe44c81b4ec1482075be, type: 3}
+  soundBoss2: {fileID: 8300000, guid: c373c265c2b2e7d4190fb6d5a4f27756, type: 3}
 --- !u!212 &212048507575134646
 SpriteRenderer:
   m_ObjectHideFlags: 1

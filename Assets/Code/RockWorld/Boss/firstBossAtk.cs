@@ -16,6 +16,7 @@ public class firstBossAtk : MonoBehaviour {
 
     public Transform AcidSpawn;
     public Transform PoolSpawn;
+    public AudioClip attackboss; // variável do som
 
     BossMov boss;               // Permite modificar variaveis no script BossMov
     Animator AnimController;
@@ -35,6 +36,7 @@ public class firstBossAtk : MonoBehaviour {
 
         // Caso o jogador esteja no alcance e o boss esteja pronto, o boss ataca
         if (inRange() && Cooldown <= 0)
+           
             AnimController.SetBool("Ranged", true);
 	}
 
@@ -43,6 +45,7 @@ public class firstBossAtk : MonoBehaviour {
         //Quando o jogador se aproxima do Boss, a movimentação do Boss é parada e o ataque é ativado
         if (collision.gameObject.CompareTag("Player"))
         {
+          
             boss.canWalk = false;
             AnimController.SetBool("Melee", true);
         }
@@ -90,9 +93,10 @@ public class firstBossAtk : MonoBehaviour {
     {
         // Cospe acido no jogador
         if (Action == "Attack")
-        {
+        { 
             var Bullet = Instantiate(AcidRanged) as Transform;
             Bullet.position = AcidSpawn.position;
+            SoundManager.instance.PlaySingle(attackboss);
         }
 
         // Termina o ataque e reseta o Cooldown

@@ -5,7 +5,8 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - soundattack: {fileID: 8300000, guid: f19215d2bd0134f37bfa0884c64969db, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

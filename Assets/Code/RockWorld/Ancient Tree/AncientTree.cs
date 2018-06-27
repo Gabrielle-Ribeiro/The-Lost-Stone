@@ -21,6 +21,9 @@ public class AncientTree : MonoBehaviour {
 
     public int life;                // Vida do npc
     public int playerDamage;        // Dano que o jogador causa a este npc
+                                    //Variável do audio
+    public AudioClip attackSound1;
+    public AudioClip soundtree;
 
     Animator AnimController;        // Controla as animações do npc
 
@@ -28,8 +31,7 @@ public class AncientTree : MonoBehaviour {
     Transform target;               // Armazena o local do alvo (Jogador)
 
     Rigidbody2D rgbd_ancientTree;   // Permite freezar a posição do npc ao morrer
-    
-	void Start () {
+    void Start () {
         // Definindo os componentes do npc
         // Permite:
         ancientTree = GetComponent<Transform>();            // Ler e modificar dados referentes a posição
@@ -58,13 +60,15 @@ public class AncientTree : MonoBehaviour {
             // Caso o jogador esteja no "campo de visão" do npc, ele o persegue
             if (!lostPlayer && !isDead)
             {
+                SoundManager.instance.PlaySingle(soundtree);
+
                 // Muda a direção do npc se o jogador estiver a direita do npc && !LookingAtRight 
                 if (target.position.x > transform.position.x && LookingAtRight == false)
                 {
                     Vector2 scale = ancientTree.localScale;     // Copia a escala atual
                     scale.x *= -1;                              // Inverte o eixo X, flip();
                     ancientTree.localScale = scale;             // Aplica ao npc
-
+                   
                     LookingAtRight = true;
                 }
 
@@ -93,6 +97,7 @@ public class AncientTree : MonoBehaviour {
         if (isWaiting && !collision.gameObject.CompareTag("Ground"))
             isWaiting = false;
 
+
         // Se a bala acertar o npc
         if (collision.gameObject.tag == "Shot")
         {
@@ -118,6 +123,8 @@ public class AncientTree : MonoBehaviour {
         {
             canWalk = true;
             AnimController.SetBool("isAttacking", true);
+             SoundManager.instance.PlaySingle(attackSound1);
+
         }
     }
 
@@ -125,13 +132,15 @@ public class AncientTree : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("Player"))
             AnimController.SetBool("isAttacking", false);
+       
     }
 
     void OnTriggerStay2D(Collider2D collision)
     {
 		// Persegue o jogador caso ele fique dentro do trigger
 		if(!isWaiting && collision.gameObject.CompareTag("Player"))
-		{
+         
+        {
             lostPlayer = false;
 
 			if (!canWalk)

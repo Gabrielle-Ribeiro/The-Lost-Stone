@@ -12,7 +12,8 @@ public class BirdEnemy : MonoBehaviour {
 	public Transform enemyTransform;
 	public Transform target;
 	public Transform birdHouse;
-
+    public AudioClip birdsound; //variável do som
+    public AudioClip attackbird;
 
 	// Variáveis de controle da vida do inimigo
 	public bool enemyIsAlive = true;
@@ -42,6 +43,7 @@ public class BirdEnemy : MonoBehaviour {
 			if(followPlayer){
 				if (target.position.x > transform.position.x && direction < 0)
 				{
+                   
 					Flip ();
 					direction = -direction;
 				}
@@ -78,7 +80,8 @@ public class BirdEnemy : MonoBehaviour {
 		// Se o player entrar na área de trigger do inimigo, ele será perseguido
 		if(coll.gameObject.CompareTag("Player")){
 			followPlayer = true;
-		}
+            SoundManager.instance.PlaySingle(birdsound);
+        }
 		// Se o inimigo chegar no limite de sua área de movimentação, sua diração é alterada
 		if(coll.CompareTag("EnemyArea")){
 			followPlayer = false; 
@@ -98,6 +101,7 @@ public class BirdEnemy : MonoBehaviour {
 		// Se o inimigo colidir com o player o ataque é ativado
 		if(coll.gameObject.CompareTag("Player")){
 			Atack ();
+            SoundManager.instance.PlaySingle(attackbird);
 		}
 		// Se o inimigo receber um tiro, levará dano
 		if(coll.gameObject.CompareTag("Shot")){

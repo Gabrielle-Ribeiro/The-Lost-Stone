@@ -14,6 +14,8 @@ public class ThirdBoss : MonoBehaviour
 
     public int life;               
     public int playerDamage;
+    public AudioClip soundBoss; //Variáveis do som
+    public AudioClip attackBoss;
 
     Vector2 direction = Vector2.left;
 
@@ -35,6 +37,7 @@ public class ThirdBoss : MonoBehaviour
         canAttack = false;
         isDead = false;
         LookingAtRight = false;
+        SoundManager.instance.PlaySingle(soundBoss);
     }
 
     void Update()
@@ -118,6 +121,7 @@ public class ThirdBoss : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Player"))
             {
+                SoundManager.instance.PlaySingle(attackBoss);
                 //animação de dano
             }
 
@@ -130,6 +134,7 @@ public class ThirdBoss : MonoBehaviour
     {
         if (!canAttack)
         {
+        
             transform.localScale = new Vector2(-1 * transform.localScale.x,
                 transform.localScale.y);
 

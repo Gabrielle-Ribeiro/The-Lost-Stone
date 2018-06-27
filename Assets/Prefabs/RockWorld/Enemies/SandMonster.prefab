@@ -216,6 +216,8 @@ MonoBehaviour:
   sandMonsterMinor: {fileID: 4710348384777792, guid: 415302cefb14a1149aa9fc5a7d181d9d,
     type: 2}
   bulletSpawn: {fileID: 4780905672018670}
+  soundMonster1: {fileID: 8300000, guid: 54a42caaf18cfe44c81b4ec1482075be, type: 3}
+  soundattack: {fileID: 8300000, guid: f19215d2bd0134f37bfa0884c64969db, type: 3}
 --- !u!212 &212201427680035708
 SpriteRenderer:
   m_ObjectHideFlags: 1

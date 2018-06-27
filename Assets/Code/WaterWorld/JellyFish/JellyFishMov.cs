@@ -9,7 +9,8 @@ public class JellyFishMov : MonoBehaviour {
 	public float speed = 1.5f;
 	public Rigidbody2D jellyFishRigidbody;
 	public Transform jellyFishTransform;
-
+    // variável do som 
+    public AudioClip soundfish;
 	void Start () {
 		jellyFishRigidbody = GetComponent<Rigidbody2D> ();
 		jellyFishTransform = GetComponent<Transform> ();
@@ -17,14 +18,17 @@ public class JellyFishMov : MonoBehaviour {
 
 	void Update () {
 		jellyFishRigidbody.velocity = new Vector2 (speed * direction, jellyFishRigidbody.velocity.y);
-		Destroy (this.gameObject, 8f);
+        Destroy (this.gameObject, 8f);
+       
 	}
 
 	void OnTriggerEnter2D(Collider2D coll){
 		if(coll.CompareTag("EnemyArea")){
 			direction = -direction;
-			Flip ();
-		}
+            Flip ();
+            SoundManager.instance.PlaySingle(soundfish);
+
+        }
 	}
 
 	void Flip(){

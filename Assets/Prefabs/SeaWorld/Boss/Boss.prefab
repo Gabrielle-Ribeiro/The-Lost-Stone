@@ -343,6 +343,8 @@ MonoBehaviour:
   LookingAtRight: 0
   life: 3
   playerDamage: 1
+  soundBoss: {fileID: 8300000, guid: b1f27523d3115c549bdcf3847f618a81, type: 3}
+  attackBoss: {fileID: 8300000, guid: 9b735df2335dde04d8efee4a92310e0b, type: 3}
 --- !u!212 &212569961899820496
 SpriteRenderer:
   m_ObjectHideFlags: 1

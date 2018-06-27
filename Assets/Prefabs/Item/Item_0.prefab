@@ -80,7 +80,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: c7429f3109f83f44193042427cfdf520, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb69977393301b40b5bbbafe4d71206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSound: {fileID: 8300000, guid: 73bdaf6fa4a24459eb2b7e420333a198, type: 3}
 --- !u!212 &212832374267273148
 SpriteRenderer:
   m_ObjectHideFlags: 1

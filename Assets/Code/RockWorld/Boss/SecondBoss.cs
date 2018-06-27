@@ -15,6 +15,9 @@ public class SecondBoss : MonoBehaviour {
 	// Variáveis que de controle da vida do Boss
 	public bool bossIsAlive = true;
 	public float bossLife = 10f;
+    //Variável do som
+    public AudioClip attackBoss2;
+    public AudioClip soundBoss2;
 
 	void Start () {
 		// Torna possível a manipulação das propriedades do componente rigidbody do Boss
@@ -30,6 +33,7 @@ public class SecondBoss : MonoBehaviour {
 		// Se o Boss estiver vivo e longe do personagem, ele se movimenta para a esquerda e direita
 		if(bossIsAlive && canWalk){
 			bossRigidbody.velocity = new Vector2 (speed * direction, bossRigidbody.velocity.y);
+            SoundManager.instance.PlaySingle(soundBoss2);
 		}
 	}
 
@@ -37,6 +41,7 @@ public class SecondBoss : MonoBehaviour {
 		//Quando o jogador se aproxima do Boss, a movimentação do Boss é parada e o ataque é ativado
 		if(collision.gameObject.CompareTag("Player")){
 			canWalk = false;
+            SoundManager.instance.PlaySingle(attackBoss2);
 			//AnimController.SetBool("isAttacking", true);
 		}
 	}
