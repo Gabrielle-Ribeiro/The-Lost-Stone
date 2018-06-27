@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 70810759658824124}
   - component: {fileID: 61011881646792180}
   - component: {fileID: 114169725567436690}
+  - component: {fileID: 95260292585012586}
   m_Layer: 0
   m_Name: TainterIdle_0
   m_TagString: Enemy
@@ -104,6 +105,23 @@ CapsuleCollider2D:
   m_Offset: {x: -0.44221488, y: 0.079918504}
   m_Size: {x: 0.56146926, y: 1.3926198}
   m_Direction: 0
+--- !u!95 &95260292585012586
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964355877708362}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7007379bc6847d748a104ebefe173229, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114169725567436690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,5 +182,5 @@ SpriteRenderer:
   m_Size: {x: 2, y: 1.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
