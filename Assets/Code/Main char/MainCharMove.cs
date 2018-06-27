@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MainCharMove : MonoBehaviour {
 
 	//Variávies da Interface de usuário 
-	public int pontuation = 0;
+	public int pontuation;
     public Text points;
 	public Image hearth;
  

@@ -24,6 +24,9 @@ public class ProximaFase : MonoBehaviour
         {
             proximaFase = SceneManager.GetActiveScene().buildIndex + 1;
             PlayerPrefs.SetInt("FaseSalva", proximaFase);
+
+            SceneManager.LoadScene(proximaFase, LoadSceneMode.Single);//load da cena
+            SceneManager.UnloadSceneAsync(proximaFase - 1);//enload da cena inicial do menu 
         }
 
     }
