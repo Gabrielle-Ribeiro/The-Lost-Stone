@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114055141031924276}
   m_Layer: 0
   m_Name: life_1
-  m_TagString: Untagged
+  m_TagString: Life
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1693497300802528}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 218.97469, y: 1.4482396, z: -0.021263197}
+  m_LocalPosition: {x: 1.1963047, y: 0.21576992, z: -0.021263197}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb69977393301b40b5bbbafe4d71206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   itemSound: {fileID: 8300000, guid: 7e154b08d67ba4bfab784907698276ac, type: 3}
+=======
+  itemRigidbody: {fileID: 0}
+>>>>>>> 46e5e3c89c8fd684cf28de98d54e86e2ef95b103
 --- !u!212 &212968807636718100
 SpriteRenderer:
   m_ObjectHideFlags: 1

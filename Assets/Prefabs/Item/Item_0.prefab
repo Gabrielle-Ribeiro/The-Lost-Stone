@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 61509953593900948}
   - component: {fileID: 114020914570393126}
   - component: {fileID: 95773405658718018}
+  - component: {fileID: 50170044363460978}
   m_Layer: 0
   m_Name: Item_0
-  m_TagString: Untagged
+  m_TagString: PontuationItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,12 +38,32 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1083643803290868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -51.25, y: 0.39, z: 0.6732218}
+  m_LocalPosition: {x: 7.04, y: -2.4, z: 0.6732218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50170044363460978
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083643803290868}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61509953593900948
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -96,7 +117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb69977393301b40b5bbbafe4d71206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   itemSound: {fileID: 8300000, guid: 73bdaf6fa4a24459eb2b7e420333a198, type: 3}
+=======
+  itemRigidbody: {fileID: 50170044363460978}
+>>>>>>> 46e5e3c89c8fd684cf28de98d54e86e2ef95b103
 --- !u!212 &212832374267273148
 SpriteRenderer:
   m_ObjectHideFlags: 1

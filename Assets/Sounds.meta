@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Sounds.meta
 guid: 4304c33f5456cd749bb1f3dff58df83a
 folderAsset: yes
 timeCreated: 1529926813
+=======
+guid: 8956f6b07f9164d4088db3c03609ea3a
+folderAsset: yes
+timeCreated: 1530034049
+>>>>>>> 46e5e3c89c8fd684cf28de98d54e86e2ef95b103:Assets/Scenes/etc.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}

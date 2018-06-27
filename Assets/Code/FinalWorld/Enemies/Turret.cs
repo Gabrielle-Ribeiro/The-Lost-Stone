@@ -11,14 +11,32 @@ public class Turret : MonoBehaviour {
 	// Variáveis de controle do ataque
 	public bool seePlayer = false;
 
+	//Controle das animações
+	public Animator turretAnim;
+
 	void Start () {
-		
+
+		// Controle das animações
+		turretAnim = GetComponent<Animator> ();
+
+		turretAnim.SetBool ("IsOpen", false);
+		turretAnim.SetBool ("SeePlayer", false);
+		//turretAnim.SetBool ("IsFiring", false);
+		//turretAnim.SetBool ("IsScannig", false);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(life <= 0){
 			TurretDead ();
+		}
+		if(seePlayer){
+			turretAnim.SetBool ("SeePlayer", true);
+		}
+		else{
+			turretAnim.SetBool ("SeePlayer", false);
+			TurretClose ();
 		}
 	}
 
@@ -35,33 +53,19 @@ public class Turret : MonoBehaviour {
 		if(turretIsAlive){
 			if(coll.gameObject.CompareTag("Player")){
 				seePlayer = false;
-				TurretClose ();
 			}
 		}
 	}
 
 	void TurretOpen(){
 		if(turretIsAlive){
-			// Animação TurretOpen
+			turretAnim.SetBool ("IsOpen", true);
 		}
 	}
 
 	void TurretClose(){
 		if(turretIsAlive){
-			// Animação Turret Close
-		}
-	}
-
-	void TurretIdle(){
-		if(turretIsAlive && seePlayer){
-			// Animação Turret Idle
-			TurretAtack (); // No fim da animação turret idle
-		}
-	}
-
-	void TurretAtack(){
-		if(turretIsAlive && seePlayer){
-			// Animação TurretAtack
+			turretAnim.SetBool ("IsOpen", false);
 		}
 	}
 
