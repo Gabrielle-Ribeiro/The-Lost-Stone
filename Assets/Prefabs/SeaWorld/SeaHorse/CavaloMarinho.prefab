@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 60894500547813424}
   - component: {fileID: 61475533810462796}
   - component: {fileID: 114124486137450454}
+  - component: {fileID: 95734058920066066}
   m_Layer: 0
   m_Name: CavaloMarinho
   m_TagString: Enemy
@@ -158,6 +159,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.130781, y: 1.28}
   m_EdgeRadius: 0
+--- !u!95 &95734058920066066
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1445113111160616}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8b1debd6ad1983468a90e64b4f47577, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114124486137450454
 MonoBehaviour:
   m_ObjectHideFlags: 1
